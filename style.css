@@ -46,19 +46,21 @@
     }
     .toparea {
         background-color: lightblue;
-        height: 25vh;  
+        height: 20vh;  
         text-align: center;
         font-family: 'Concert One', cursive;
     }
     .logo {
         background-color: skyblue;
+        background-image: url("logo2.jpg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
         height: 100%;  
     }
     .keycardtitle {
         height: 20%;
         width: 100%;
         justify-content: center;
-        margin-top: 3%;
     }
     .keycardsbg {
         height: 85%;
@@ -83,7 +85,6 @@
     }
     .keycard {
         width: 17%;
-        height: 80%;
     }
     .playericon {
         background-color: cornflowerblue;
@@ -102,7 +103,7 @@
         margin-top: 5%;
     }
     .playertitle{
-        margin-top: 5%;
+        margin-top: 2%;
         font-size: 1.5rem;
     }
     .playericon {
@@ -122,7 +123,14 @@
     }
     .gamearea {
         background-color: lightcoral;
-        height: 75vh;   
+        height: 67vh;   
+        width: 100%; 
+        margin-left: 0px;
+        font-family: 'Concert One', cursive;
+    }
+    .gameareainput {
+        background-color: lightgray;
+        height: 14vh;
         width: 100%; 
         margin-left: 0px;
         font-family: 'Concert One', cursive;
@@ -130,10 +138,9 @@
     .cardset {
         justify-content: center;
         width: 100%;
-        height: 83%;
+        height: 18%;
     }
     .input {
-        background-color: lightseagreen;
         height: 16%; 
         width: 100%; 
         justify-content: center;
@@ -145,8 +152,8 @@
         margin: 1%;
         align-content: center;
         justify-content: center;
-        width: 17%;
-        height: 25%;
+        width: 15%;
+        height: 78%;
     }
     .submit button {
         all: unset;
