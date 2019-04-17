@@ -33,6 +33,8 @@ class Card{
     }
 
     constructCard() {
+        var counter = 1;
+
         for (var rowI = 0; rowI < 5; rowI++) {
             var newRow = $('<div>').addClass('cardset row'); 
 
@@ -41,6 +43,8 @@ class Card{
                 var newCardFront = $('<div>').addClass('cardfront');
                 var newCardBack = $('<div>').addClass('cardback');
                 var newCardP = $('<p>').addClass('word');
+
+                newCardBack.addClass('num' + counter++);
 
                 var randomWordIndex = Math.floor(Math.random() * this.wordArray.length);
                 var randomWord = this.wordArray[randomWordIndex];
