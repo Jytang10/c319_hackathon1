@@ -1,8 +1,9 @@
 class CodenamesFBObject{
-    constructor(gameName, changeCallbackFunction){
-        this.boardName = gameName;
+    constructor(codenamesDuet, codenameCallbackFunction, onLoadCallback){
+        this.boardName = codenamesDuet;
+        this.onLoadCallback = onLoadCallback;
         this.db = null;
-        this.callback = changeCallbackFunction;
+        this.callback = codenameCallbackFunction;
         this.lastSend = null;
         
         this.start = this.start.bind( this );
@@ -25,11 +26,12 @@ class CodenamesFBObject{
     }
     getAllData( dataCallback ){
         this.db.database().ref(this.boardName).once('value', (snapShot)=>{
-            dataCallback( snapshot.val() );
+            dataCallback( snapShot.val() );
         });
     }
     registerListener(){
         this.db.database().ref(this.boardName).on('value',this.handleDataUpdate.bind(this));
+        this.onLoadCallback();
     }
     handleDataUpdate(data){
         var currentData = JSON.stringify(data.val());
