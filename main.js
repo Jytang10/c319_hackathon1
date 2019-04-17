@@ -2,7 +2,7 @@
 $(document).ready(initializeApp);
 
 function initializeApp() {
-    
+    $('.cover').hide();
 }
 
 class Player {
