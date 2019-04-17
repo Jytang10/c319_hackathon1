@@ -83,7 +83,23 @@
     }
     .keycard {
         width: 17%;
-        height: 100%;
+        height: 80%;
+    }
+    .playericon {
+        background-color: cornflowerblue;
+        height: 50%;
+        width: 50%;
+    }
+    .playertitle{
+        margin-top: 5%;
+        font-size: 1.5rem;
+    }
+    .playericon {
+        width: 50%;
+        height: 50%;
+        background-color:cornflowerblue;
+        margin-left: 25%;
+        margin-top: 5%;
     }
     .playertitle{
         margin-top: 5%;
