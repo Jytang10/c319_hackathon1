@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css?family=Concert+One');
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
+    *,
+    html {
+      margin: 0;
+      padding: 0;
+    }
+    .cover {
+        font-family: "Roboto", sans-serif;
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        /* background-color: gray; */
+        opacity: 0;
+        /* make ' opacity : 1 ' to make it visible */
+        z-index: 100;
+        justify-content: center;
+        background-image: url("box.jpg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+    .covertext {
+        justify-content: center;
+        width: 100%;
+    }
+    .title {
+        position: relative;
+        top: 20%;
+        font-size: 5rem;
+        justify-content: center;
+        width: 100%;
+    }
+    .startbtn, .howtobtn {
+        margin-bottom: 3%;
+        top: 40%;
+        position: relative;
+    }
+    .cover button {
+        all: unset;
+        cursor: pointer;
+        padding: 1%;
+        background-color:#c9c5d1;
+        box-shadow: 2px 3px 3px #041310;
+        border-radius:10px;
+    }
+    .toparea {
+        background-color: lightblue;
+        height: 25vh;  
+        text-align: center;
+        font-family: 'Concert One', cursive;
+    }
+    .logo {
+        background-color: skyblue;
+        height: 100%;  
+    }
+    .keycardtitle {
+        height: 20%;
+        width: 100%;
+        justify-content: center;
+    }
+    .keycards {
+        background-color: rgb(85, 143, 167);
+        justify-content: center;
+        height: 100%;  
+        width: 100%;
+    }
+    .keycard1, .keycard3 {
+        background-color: rgb(43, 109, 43);
+    }
+    .keycard2, .keycard4 {
+        background-color: yellow;
+    }
+    .keycard5 {
+        background-color:black;
+    }
+    .keycard {
+        width: 17%;
+        height: 100%;
+    }
+    .sidebar {
+        position: relative;
+        text-align: center;
+        background-color: aquamarine;
+        height: 100%;  
+        width: 17%;  
+        font-family: 'Concert One', cursive;
+    }
+    .gamearea {
+        background-color: lightcoral;
+        height: 75vh;   
+        width: 100%; 
+        margin-left: 0px;
+        font-family: 'Concert One', cursive;
+    }
+    .cardset {
+        justify-content: center;
+        width: 100%;
+        height: 83%;
+    }
+    .input {
+        background-color: lightseagreen;
+        height: 16%; 
+        width: 100%; 
+        justify-content: center;
+        text-align: center;
+        margin-left: 0px;
+    }
+    .card {
+        text-align: center;
+        margin: 1%;
+        align-content: center;
+        justify-content: center;
+        width: 17%;
+        height: 25%;
+    }
+    .submit button {
+        all: unset;
+        cursor: pointer;
+        padding: 3px;
+        background-color:whitesmoke;
+        box-shadow: 2px 3px 3px #041310;
+        border-radius:10px;
+    }
