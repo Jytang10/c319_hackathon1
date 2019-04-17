@@ -53,6 +53,12 @@
     .logo {
         background-color: skyblue;
         height: 100%;  
+        background-image: url("logo2.jpg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+    .clueword, .cluenumber {
+        border: 1px solid black;
     }
     .keycardtitle {
         height: 20%;
