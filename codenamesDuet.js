@@ -55,17 +55,37 @@ class Codenames{
         this.handleInitialGameState = this.handleInitialGameState.bind( this );
         this.firebaseLoaded = this.firebaseLoaded.bind(this);
         this.firebase = new CodenamesFBObject('CodenamesDuet', this.handleFirebaseUpdate, this.firebaseLoaded);
-        
+    
     }
     firebaseLoaded(){
         this.firebase.getAllData( this.handleInitialGameState );
     }
     handleInitialGameState( data ){
+        // this.data = {
+        //     name: 'james',
+        //     age: 29,
+        //     message: 'codenames'
+        // }
+
         this.data = {
-            name: 'james',
-            age: 19,
-            message: 'codenames'
+            currentPlayer: null,
+            players: [],
+            gameBoard: [
+                ['','','','','',''],
+                ['','','','','',''],
+                ['','','','','',''],
+                ['','','','','',''],
+                ['','','','','',''],
+            ],
+            playerStats: {
+                p1: {
+                    agentsRemaining: 8
+                }
+            }
         }
+
+
+
         this.firebase.saveState(this.data);
         //if there is no current player / data, select 25 words and put them into firebase
             //then update firebase with new obj
@@ -74,6 +94,9 @@ class Codenames{
     handleFirebaseUpdate( data ){
         console.log('new data is ', data);
         //do something with the data
+
+        // this.data = $('.clue').text();
+        // this.firebase.saveState(this.data);
 /*
     function updateGame(data){
 		$(".input").text(data.message);
