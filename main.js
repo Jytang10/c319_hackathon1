@@ -1,8 +1,15 @@
 
 $(document).ready(initializeApp);
 
+var newGame;
+var generateBoard;
+
 function initializeApp() {
     $('.cover').hide();
+    newGame = new Codenames();
+    generateBoard = new Card();
+    generateBoard.constructCard();
+    
 }
 
 class Player {
