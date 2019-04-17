@@ -63,7 +63,7 @@
         background-color: rgb(85, 143, 167);
         justify-content: center;
         height: 100%;  
-        width: 100%;
+        width: 80%;
     }
     .keycard1, .keycard3 {
         background-color: rgb(43, 109, 43);
@@ -76,7 +76,12 @@
     }
     .keycard {
         width: 17%;
-        height: 100%;
+        height: 80%;
+    }
+    .playericon {
+        background-color: cornflowerblue;
+        height: 50%;
+        width: 50%;
     }
     .sidebar {
         position: relative;
