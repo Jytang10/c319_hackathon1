@@ -8,29 +8,53 @@ class Card{
             'brachycephalic',
             'grumble',
             'fawn',
-            'potato'
+            'potato',
+            'rat',
+            'cake',
+            'puggle',
+            'pugrrito',
+            'pugasaurus',
+            'biscuit',
+            'desk',
+            'saddle',
+            'bucket',
+            'beam',
+            'coach',
+            'frost',
+            'curry',
+            'parade',
+            'london',
+            'rock',
+            'floor', 
+            'snake',
+            'break',
+            'battle'
         ]
     }
 
     constructCard() {
-        var newRow = $('<div>').addClass('cardset row'); 
+debugger
+        for (var rowI = 0; rowI < 5; rowI++) {
+            var newRow = $('<div>').addClass('cardset row'); 
 
-        for (var cardI = 0; cardI < 5; cardI++) {
-            var newCard = $('<div>').addClass('card');
-            var newCardFront = $('<div>').addClass('cardfront');
-            var newCardBack = $('<div>').addClass('cardback');
-            var newCardP = $('<p>').addClass('word');
+            for (var cardI = 0; cardI < 5; cardI++) {
+                var newCard = $('<div>').addClass('card');
+                var newCardFront = $('<div>').addClass('cardfront');
+                var newCardBack = $('<div>').addClass('cardback');
+                var newCardP = $('<p>').addClass('word');
 
-            var randomWordIndex = Math.floor(Math.random() * this.wordArray.length);
-            var randomWord = this.wordArray[randomWordIndex];
-            this.wordArray.splice(randomWordIndex, 1);
+                var randomWordIndex = Math.floor(Math.random() * this.wordArray.length);
+                var randomWord = this.wordArray[randomWordIndex];
+                this.wordArray.splice(randomWordIndex, 1);
 
-            newCardP.text(randomWord);
+                newCardP.text(randomWord);
 
-            newCardFront.append(newCardP);
-            newCard.append(newCardFront, newCardBack);
-            newRow.append(newCard);
+                newCardFront.append(newCardP);
+                newCard.append(newCardFront, newCardBack);
+                newRow.append(newCard);
+            }
+            $('.gamearea .cards').append(newRow);
         }
-        $('.gamearea').append(newRow);
+        
     }
 }

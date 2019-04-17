@@ -10,13 +10,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<<<<<<< HEAD
     <script src="card.js"></script>
-=======
     <script src="firebaseConfig.js"></script>
     <script src="codenamesFirebase.js"></script>
     <script src="codenamesDuet.js"></script>
->>>>>>> 6d7ea984d35690970b4ed86891e843bff00194c3
     <script src="main.js"></script>
 </head>
 <body>
@@ -30,7 +27,7 @@
     <!--header starts-->
     <header>
         <div class = "toparea row">
-            <div class = "logo col-2">Logo here</div>
+            <div class = "logo col-2"></div>
             <div class = "player player1 col-3">
                 <div class= "playertitle">player 1</div>
                 <div class="playericon col"></div>
@@ -60,13 +57,15 @@
     <section>
       <div class = "gamearea stat row">
         <div class = "sidebar col-2">
-            <div class = "stats">Stats</div>
+            <div class = "stats"><h4>Stats<h4></div>
+            <div class= "cluearea">Clue : <p class = "clue"></p></div>
+            <div class= "cluearea">Number :<p class = "number"></p></div>
             <div class = "timertoken">Left time token</div>
             <div class = "tokenvalue">ex) 7</div>
         <!-- <div class="timer"> feature for later</div> -->
         </div>    
-        <div class="gamearea cards row col-10">
-            <!-- <div class="cardset row">
+        <div class="gamearea cards row col-10">    
+        <!-- <div class="cardset row">
                 <div class="card">
                     <div class="cardfront"><p class="word">iceland</p></div>
                     <div class="cardback"></div>
@@ -90,15 +89,15 @@
 
             </div> -->
             <!--input area-->
-            <div class = "input row">
-                <div class = "input">
-                    <label>Clue : <input type = "text"></label>
-                    <label>Number : <input type = "number"></label>
-                    <div class = 'submit'><button>Submit</button></div>
-                </div>
-            </div>
-            <!--input area-->
         </div>
+        <div class = "gameareainput row">
+            <div class = "input">
+                <label id="clue">Clue : <input type = "text" id="clue"></label>
+                <label id="number">Number : <input type = "number" id="number"></label>
+                <div class = 'submit'><button>Submit</button></div>
+            </div>
+        </div>
+        <!--input area-->
       </div>
     </section>
     <!--game area ends--> 
