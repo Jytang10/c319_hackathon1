@@ -29,7 +29,6 @@ class Keycards {
     }
 }
 
-
 var player1 = new Player(1);
 var player2 = new Player(2);
 console.log('player1', player1);
