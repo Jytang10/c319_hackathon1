@@ -33,7 +33,6 @@ class Card{
     }
 
     constructCard() {
-debugger
         for (var rowI = 0; rowI < 5; rowI++) {
             var newRow = $('<div>').addClass('cardset row'); 
 
