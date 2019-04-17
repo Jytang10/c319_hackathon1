@@ -74,6 +74,9 @@ class Codenames{
     handleFirebaseUpdate( data ){
         console.log('new data is ', data);
         //do something with the data
+        
+        
+
 /*
     function updateGame(data){
 		$(".input").text(data.message);

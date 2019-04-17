@@ -5,7 +5,7 @@
 //             projectId: "c117connect4",
 //             storageBucket: "c117connect4.appspot.com",
 //             messagingSenderId: "1046895016915"
-//           };
+//          git };
 
 var firebaseConfig = {
   apiKey: "AIzaSyD-g3R7y3415zZUeoDSzdLanRiYUuiSQUI",
