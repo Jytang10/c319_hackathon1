@@ -71,17 +71,21 @@ class Codenames{
             currentPlayer: null,
             players: [],
             gameBoard: [
-                ['','','','','',''],
-                ['','','','','',''],
-                ['','','','','',''],
+                [{position: 'num1',p1State: 'innocent', p2State:'assassin'},{position: 'num2',p1State: 'innocent', p2State:'assassin'},{position: 'num3',p1State: 'innocent', p2State:'assassin'},{position: 'num4',p1State: 'innocent', p2State:'agent'},{position: 'num5',p1State: 'innocent', p2State:'agent'}],
+                [{position: 'num6',p1State: 'innocent', p2State:'agent'},{position: 'num7',p1State: 'innocent', p2State:'assassin'},{position: 'num8',p1State: 'innocent', p2State:'assassin'},{position: 'num9',p1State: 'innocent', p2State:'assassin'},{position: 'num10',p1State: 'innocent', p2State:'assassin'}],
+                [{position: 'num11',p1State: 'innocent', p2State:'agent'},{position: 'num12',p1State: 'innocent', p2State:'assassin'},{position: 'num13',p1State: 'innocent', p2State:'assassin'},{position: 'num14',p1State: 'innocent', p2State:'assassin'},{position: 'num15',p1State: 'innocent', p2State:'assassin'}],
                 ['','','','','',''],
                 ['','','','','',''],
             ],
             playerStats: {
                 p1: {
-                    agentsRemaining: 8
+                    agentsRemaining: 9
+                }
+                p2: {
+                    agentsRemaining: 9
                 }
             }
+            
         }
 
 
