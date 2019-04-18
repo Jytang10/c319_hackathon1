@@ -17,7 +17,11 @@ function initializeApp() {
     // $('.submitbtn').click(newGame._player.getInputVal);
     // newGame.addNewPlayer(player1);
     // newGame.addNewPlayer(player2);
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> origin/firebaseData
 
 }
 
