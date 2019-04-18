@@ -8,16 +8,13 @@ var player2;
 
 function initializeApp() {
     $('.cover').hide();
+    player1 = new Player(1);
+    player2 = new Player(2);
      //add click handler to landing page 'start' button
     newGame = new Codenames();
     generateBoard = new Card();
     generateBoard.constructCard();
-<<<<<<< HEAD
-=======
     $('.submitbtn').click(player1.getInputVal);
-    newGame.addNewPlayer(player1);
-    newGame.addNewPlayer(player2);
->>>>>>> origin/css3
 }
 
 class Player {
@@ -29,6 +26,8 @@ class Player {
         this.playerKeycard.push(newKeycards.getKeycards());
         this.clue;
         this.number;
+        newGame.addNewPlayer(player1);
+        newGame.addNewPlayer(player2);
     }
     getInputVal() {
         this.clue = $('.clueinput').val();
@@ -54,10 +53,7 @@ class Keycards {
     }
 }
 
-player1 = new Player(1);
-player2 = new Player(2);
 // player1 = new Player(1);
 // player2 = new Player(2);
 console.log('player1', player1);
 console.log('player2', player2);
-
