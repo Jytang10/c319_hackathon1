@@ -3,20 +3,15 @@ $(document).ready(initializeApp);
 
 var newGame;
 var generateBoard;
-var player1;
-var player2;
 
 function initializeApp() {
     $('.cover').hide();
-
     newGame = new Codenames(new Player());
     generateBoard = new Card();
     generateBoard.constructCard();
      //add click handler to landing page 'start' button
     $('.submitbtn').click(newGame._player.getInputVal);
-    // newGame.addNewPlayer(player1);
-    // newGame.addNewPlayer(player2);
-
+    $('.cardback').click(generateBoard.cardclicked);
 }
 
 class Player {
@@ -34,23 +29,22 @@ class Player {
         console.log('this.clue', this.clue);
         console.log('this.number', this.number);
     }
-
 }
 
 
-class Keycards {
-    constructor( ) { 
-        this.keycard = [
-            ["green", "yellow", "green", "yellow", "black"],
-            ["black", "green", "green", "yellow", "yellow"],
-            ["green", "green", "black", "yellow", "yellow"]
-        ]
-    }
-    getKeycards() {
-        this.randomNum = Math.floor(Math.random() * this.keycard.length);
-        return this.keycard[this.randomNum];
-    }
-}
+// class Keycards {
+//     constructor( ) { 
+//         this.keycard = [
+//             ["green", "yellow", "green", "yellow", "black"],
+//             ["black", "green", "green", "yellow", "yellow"],
+//             ["green", "green", "black", "yellow", "yellow"]
+//         ]
+//     }
+//     getKeycards() {
+//         this.randomNum = Math.floor(Math.random() * this.keycard.length);
+//         return this.keycard[this.randomNum];
+//     }
+// }
 
 // player1 = new Player(1);
 // player2 = new Player(2);
