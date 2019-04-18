@@ -6,19 +6,14 @@ var generateBoard;
 
 function initializeApp() {
     $('.cover').hide();
-    newGame = new Codenames();
+    newGame = new Codenames(new Player());
     generateBoard = new Card();
     generateBoard.constructCard();
 
-    var player1 = new Player(1);
-    var player2 = new Player(2);
-    newGame.addNewPlayer(player1);
-    newGame.addNewPlayer(player2);
 }
 
 class Player {
-    constructor( num ) {
-        this.currentPlayer = num; //player[currentPlayer]
+    constructor() {
         this.counts = 9; //left turns
         this.playerKeycard = [];
         var newKeycards = new Keycards();
