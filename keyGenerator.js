@@ -5,7 +5,7 @@ class keyGenerator{
         this._p1AgentArray = [];
         this._p1SinArray = [];
         this._p2AgentArray = [];
-        this._p2Sin
+        this._p2SinArray = [];
     }
 
     get numArray() {
@@ -36,7 +36,7 @@ class keyGenerator{
     }
 
     p1AssignRole() {
-        generateArray();
+        this.generateArray();
         for (var p1Index = 0; p1Index < 9; p1Index++) {
             var randNum = Math.floor(Math.random() * this.numArray.length);
             this.p1AgentArray.push('.num' + this.numArray[randNum]);
@@ -48,10 +48,11 @@ class keyGenerator{
             this.p1AgentArray.push('.num' + this.numArray[randNum]);
             this.numArray.splice(randNum, 1);
         }
+        console.log(this.p1AgentArray);
     }
 
     p2AssignRole() {
-        generateArray();
+        this.generateArray();
         for (var p2Index = 0; p2Index < 9; p2Index++) {
             var randNum = Math.floor(Math.random() * this.numArray.length);
             this.p2AgentArray.push('.num' + this.numArray[randNum]);

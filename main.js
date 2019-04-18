@@ -9,7 +9,6 @@ function initializeApp() {
     newGame = new Codenames();
     generateBoard = new Card();
     generateBoard.constructCard();
-    
 }
 
 class Player {
