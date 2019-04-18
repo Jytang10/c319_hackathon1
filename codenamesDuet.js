@@ -146,8 +146,9 @@ class Codenames{
     handleFirebaseUpdate( data ){
         console.log('new data is ', data);
         //do something with the data
-        // $("#clueDisplay").text(data.clue);
-		// $("#idDisplay").text(data.number);
+        $("#clueDisplay").text(data.clue);
+        $("#numberDisplay").text(data.number);
+        this.updateDB(data);
     }
     updateDB(){
         this.firebase.saveState(this.data)
