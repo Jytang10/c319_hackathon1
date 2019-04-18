@@ -8,20 +8,15 @@ var player2;
 
 function initializeApp() {
     $('.cover').hide();
-<<<<<<< HEAD
+
     newGame = new Codenames(new Player());
     generateBoard = new Card();
     generateBoard.constructCard();
-
-=======
      //add click handler to landing page 'start' button
-    newGame = new Codenames();
-    generateBoard = new Card();
-    generateBoard.constructCard();
-    $('.submitbtn').click(player1.getInputVal);
-    newGame.addNewPlayer(player1);
-    newGame.addNewPlayer(player2);
->>>>>>> origin/keyGenerator
+    $('.submitbtn').click(newGame._player.getInputVal);
+    // newGame.addNewPlayer(player1);
+    // newGame.addNewPlayer(player2);
+
 }
 
 class Player {
@@ -57,10 +52,10 @@ class Keycards {
     }
 }
 
-player1 = new Player(1);
-player2 = new Player(2);
 // player1 = new Player(1);
 // player2 = new Player(2);
-console.log('player1', player1);
-console.log('player2', player2);
+// // player1 = new Player(1);
+// // player2 = new Player(2);
+// console.log('player1', player1);
+// console.log('player2', player2);
 
