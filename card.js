@@ -3,6 +3,7 @@ class Card{
         this._word;
         this.front;
         this.back;
+        this.gameboardArray;
         this.wordArray = [
             'pug',
             'brachycephalic',
@@ -71,5 +72,6 @@ class Card{
             newArray[1].push(newP2Array);
         }
         console.log(newArray)
+        this.gameboardArray = newArray;
     }
 }

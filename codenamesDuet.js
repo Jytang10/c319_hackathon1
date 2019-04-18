@@ -1,7 +1,8 @@
 
 class Codenames{
     constructor(firstPlayer) {
-        this.players = [firstPlayer];
+        this.players = [];
+        this.newPlayer = firstPlayer;
         this.displayCards = [];
         this._card;
         this._player = null;
@@ -42,28 +43,12 @@ class Codenames{
             currentPlayer: 0,
             players: [],
             words: [],
-<<<<<<< HEAD
-            gameBoard: [
-=======
             gameBoard1: 
->>>>>>> origin/firebaseData
                 [
                     [{position: 'num1',p1State:'assassin'},{position: 'num2',p1State:'assassin'},{position: 'num3',p1State:'assassin'},{position: 'num4',p1State:'innocent'},{position: 'num5',p1State:'innocent'}],
                     [{position: 'num6',p1State:'agent'},{position: 'num7',p1State:'agent'},{position: 'num8',p1State:'agent'},{position: 'num9',p1State:'innocent'},{position: 'num10',p1State:'innocent'}],
                     [{position: 'num11',p1State:'agent'},{position: 'num12',p1State:'agent'},{position: 'num13',p1State:'agent'},{position: 'num14',p1State:'innocent'},{position: 'num15',p1State:'innocent'}],
                     [{position: 'num16',p1State:'agent'},{position: 'num17',p1State:'agent'},{position: 'num18',p1State:'agent'},{position: 'num19',p1State:'innocent'},{position: 'num20',p1State:'innocent'}],
-<<<<<<< HEAD
-                    [{position: 'num21',p1State:'agent'},{position: 'num22',p1State:'agent'},{position: 'num23',p1State:'agent'},{position: 'num24',p1State:'innocent'},{position: 'num25',p1State:'innocent'}],
-                ],
-                [
-                    [{position: 'num1',p2State:'assassin'},{position: 'num2',p2State:'assassin'},{position: 'num3',p2State:'assassin'},{position: 'num4',p2State:'innocent'},{position: 'num5',p2State:'innocent'}],
-                    [{position: 'num6',p2State:'agent'},{position: 'num7',p2State:'agent'},{position: 'num8',p2State:'agent'},{position: 'num9',p2State:'innocent'},{position: 'num10',p2State:'innocent'}],
-                    [{position: 'num11',p2State:'agent'},{position: 'num12',p2State:'agent'},{position: 'num13',p2State:'agent'},{position: 'num14',p2State:'innocent'},{position: 'num15',p2State:'innocent'}],
-                    [{position: 'num16',p2State:'agent'},{position: 'num17',p2State:'agent'},{position: 'num18',p2State:'agent'},{position: 'num19',p2State:'innocent'},{position: 'num20',p2State:'innocent'}],
-                    [{position: 'num21',p2State:'agent'},{position: 'num22',p2State:'agent'},{position: 'num23',p2State:'agent'},{position: 'num24',p2State:'innocent'},{position: 'num25',p2State:'innocent'}],
-                ]
-            ],
-=======
                     [{position: 'num21',p1State:'agent'},{position: 'num22',p1State:'agent'},{position: 'num23',p1State:'agent'},{position: 'num24',p1State:'innocent'},{position: 'num25',p1State:'innocent'}]
                 ], 
         //    gameBoard2: 
@@ -74,7 +59,6 @@ class Codenames{
         //     [{position: 'num16',p2State:'agent'},{position: 'num17',p2State:'agent'},{position: 'num18',p2State:'agent'},{position: 'num19',p2State:'innocent'},{position: 'num20',p2State:'innocent'}],
         //     [{position: 'num21',p2State:'agent'},{position: 'num22',p2State:'agent'},{position: 'num23',p2State:'agent'},{position: 'num24',p2State:'innocent'},{position: 'num25',p2State:'innocent'}]
         //      ],
->>>>>>> origin/firebaseData
             playerStats: {
                 p1: {
                     agentsRemaining: 8
@@ -85,8 +69,6 @@ class Codenames{
             }
             
         }
-<<<<<<< HEAD
-=======
         for(var x = 0; x < 5; x++){
             for ( var y = 0; y< 5; y++){
                 var randomIndex = Math.floor(this.wordArray.length * Math.random());
@@ -95,22 +77,15 @@ class Codenames{
                 this.data.gameBoard1[y][x].word = randomWord;
             }
         }
->>>>>>> origin/firebaseData
         // for(var x = 0; x < 5; x++){
         //     for ( var y = 0; y< 5; y++){
         //         var randomIndex = Math.floor(this.wordArray.length * Math.random());
         //         var randomWord = this.wordArray[ randomIndex];
         //         this.wordArray.splice(randomIndex,1);
-<<<<<<< HEAD
-        //         this.data.gameBoard[y][x].word = randomWord;
-        //     }
-        // }
-=======
         //         this.data.gameBoard2[y][x].word = randomWord;
         //     }
         // }
 
->>>>>>> origin/firebaseData
     }
     firebaseLoaded(){
         this.firebase.saveState(this.data)
@@ -120,18 +95,17 @@ class Codenames{
          //initial game state
         if (data) {
             this.data = data;
-            this.data.players=this.players;
+            this.players.push(this.data.players);
             console.log(this.data.players);
         } else {
             debugger;
-            var playerNames = [];
-            for(var i=0;i<this.players.length;i++){
-                var name = this.players[i].getName();
-                playerNames.push(name);
+            // for(var i=0;i<this.players.length;i++){
+            //     var name = this.players[i].getName();
+            this.players.push(this.newPlayer);
             }
             this.data = {
                 currentPlayer: null,
-                players : playerNames,
+                players : this.newPlayer,
                 words: [],
                 gameBoard: [
                     [{position: 'num1',p1State:'assassin'},{position: 'num2',p1State:'assassin'},{position: 'num3',p1State:'assassin'},{position: 'num4',p1State:'innocent'},{position: 'num5',p1State:'innocent'}],
@@ -154,10 +128,10 @@ class Codenames{
                     var randomIndex = Math.floor(this.wordArray.length * Math.random());
                     var randomWord = this.wordArray[ randomIndex];
                     this.wordArray.splice(randomIndex,1);
-                    this.data.gameBoard1[y][x].word = randomWord;
+                    this.data.gameBoard[y][x].word = randomWord;
                 }
             }
-        }        
+                
 
 
 
@@ -165,7 +139,9 @@ class Codenames{
         //if there is no current player / data, select 25 words and put them into firebase
             //then update firebase with new obj
         //otherwise, just update your local data with the firebase data and rewrite board
+
     }
+    
     handleFirebaseUpdate( data ){
         console.log('new data is ', data);
         //do something with the data
