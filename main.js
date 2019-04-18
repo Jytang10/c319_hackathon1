@@ -9,15 +9,15 @@ var name;
 
 function initializeApp() {
     $('.cover').hide();
-
-    newGame = new Codenames(new Player('kate'));
+    name = prompt("What's your name?");
+    newGame = new Codenames(new Player(name));
     generateBoard = new Card();
     generateBoard.constructCard();
      //add click handler to landing page 'start' button
     // $('.submitbtn').click(newGame._player.getInputVal);
     // newGame.addNewPlayer(player1);
     // newGame.addNewPlayer(player2);
-    name = prompt("What's your name?");
+
 
 }
 
