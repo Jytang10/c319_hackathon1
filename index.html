@@ -10,6 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="keyGenerator.js"></script>
     <script src="card.js"></script>
     <script src="firebaseConfig.js"></script>
     <script src="codenamesFirebase.js"></script>
@@ -34,7 +35,7 @@
             </div>
             <div class = "keycards col-4 row">
                 <div class = "keycardtitle row">
-                    <h5>Keycards</h5>
+                    <p>Keycards</p>
                 </div>    
                 <div class="keycardsbg">
                     <div class="keycards row">
@@ -58,11 +59,11 @@
       <div class = "gamearea stat row">
         <div class = "sidebar col-2">
             <div class = "stats"><h4>Clue from other player<h4></div>
-            <div class= "cluearea">Clue  
+            <div class= "cluearea"><p>Clue</p>
                 <div class="clue output"><p class = "clue"></p></div>
             </div>
-            <div class= "cluearea">Number <p class = "number"></p>
-                <div class="number output"><p class = "clue"></p></div>
+            <div class= "cluearea"><p>Number</p>
+                <div class="number output"><p class = "number"></p></div>
             </div>
             <div class = "timertoken"><h4>Left time token</h4></div>
             <div class = "tokenvalue"><p class = "token">ex. 7</p></div>
@@ -74,9 +75,9 @@
         </div>
         <div class = "gameareainput row">
             <div class = "input">
-                <label id="clue">Clue : <input type = "text" id="clue"></label>
-                <label id="number">Number : <input type = "number" id="number"></label>
-                <div class = 'submit'><button>Submit</button></div>
+                <label id="clue">Clue : <input type = "text" class="clueinput" id="clue"></label>
+                <label id="number">Number : <input type = "number" class="numberinput" id="number"></label>
+                <div class = 'submit'><button class='submitbtn'>Submit</button></div>
             </div>
         </div>
         <!--input area-->
