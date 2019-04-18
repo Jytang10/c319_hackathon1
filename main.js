@@ -1,32 +1,21 @@
 
 $(document).ready(initializeApp);
 
+var name;
 var newGame;
 var generateBoard;
-<<<<<<< HEAD
-
 function initializeApp() {
     $('.cover').hide();
-    newGame = new Codenames(new Player());
-    generateBoard = new Card();
-    generateBoard.constructCard();
-     //add click handler to landing page 'start' button
-    $('.submitbtn').click(newGame._player.getInputVal);
-    $('.cardback').click(generateBoard.cardclicked);
+    name = prompt("What's your name?");
 
-function initializeApp() {
-    $('.cover').hide();
-
-    newGame = new Codenames(new Player('kate'));
+    newGame = new Codenames(new Player(name));
     generateBoard = new Card();
     generateBoard.constructCard();
      //add click handler to landing page 'start' button
     // $('.submitbtn').click(newGame._player.getInputVal);
     // newGame.addNewPlayer(player1);
     // newGame.addNewPlayer(player2);
-    name = prompt("What's your name?");
 
->>>>>>> origin/firebaseData
 }
 
 // getInputVal() {
@@ -55,13 +44,10 @@ class Player {
         console.log('this.clue', this.clue);
         console.log('this.number', this.number);
     }
-<<<<<<< HEAD
-=======
     getName(){
         return this.name;
     }
 
->>>>>>> origin/firebaseData
 }
 
 
