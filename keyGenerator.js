@@ -39,13 +39,13 @@ class keyGenerator{
         generateArray();
         for (var p1Index = 0; p1Index < 9; p1Index++) {
             var randNum = Math.floor(Math.random() * this.numArray.length);
-            this.p1AgentArray.push(this.numArray[randNum]);
+            this.p1AgentArray.push('num' + this.numArray[randNum]);
             this.numArray.splice(randNum, 1);
         }
 
         for (var p1Jindex = 0; p1Jindex < 3; p1Jindex++) {
             var randNum = Math.floor(Math.random() * this.numArray.length);
-            this.p1AgentArray.push(this.numArray[randNum]);
+            this.p1AgentArray.push('num' + this.numArray[randNum]);
             this.numArray.splice(randNum, 1);
         }
     }
@@ -54,13 +54,13 @@ class keyGenerator{
         generateArray();
         for (var p2Index = 0; p2Index < 9; p2Index++) {
             var randNum = Math.floor(Math.random() * this.numArray.length);
-            this.p2AgentArray.push(this.numArray[randNum]);
+            this.p2AgentArray.push('num' + this.numArray[randNum]);
             this.numArray.splice(randNum, 1);
         }
 
         for (var p2Jindex = 0; p2Jindex < 3; p2Jindex++) {
             var randNum = Math.floor(Math.random() * this.numArray.length);
-            this.p2AgentArray.push(this.numArray[randNum]);
+            this.p2AgentArray.push('num' + this.numArray[randNum]);
             this.numArray.splice(randNum, 1);
         }
     }

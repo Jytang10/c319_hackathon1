@@ -74,8 +74,8 @@ class Codenames{
                 ['','','','','',''],
                 ['','','','','',''],
                 ['','','','','',''],
-                [{position: num16, p1State: 'innocent', p2State: 'innocent'},{position: num17, p1State: 'innocent', p2State: 'innocent'},{position: num18, p1State: 'innocent', p2State: 'innocent'},{position: num19, p1State: 'innocent', p2State: 'innocent'},{position: num20, p1State: 'innocent', p2State: 'innocent'}],
-                [{position: num21, p1State: 'innocent', p2State: 'innocent'},{position: num22, p1State: 'innocent', p2State: 'innocent'},{position: num23, p1State: 'innocent', p2State: 'innocent'},{position: num24, p1State: 'innocent', p2State: 'innocent'},{position: num25, p1State: 'innocent', p2State: 'innocent'}],
+                ['','','','','',''],
+                ['','','','','',''],
             ],
             playerStats: {
                 p1: {
