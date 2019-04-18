@@ -44,13 +44,16 @@ class Card{
                 var newCardBack = $('<div>').addClass('cardback');
                 var newCardP = $('<p>').addClass('word');
 
-                newCardBack.addClass('num' + counter++);
+                newCardBack.attr('num', counter++);
+                newCardBack.attr('xpos', cardI);
+                newCardBack.attr('ypos', rowI);
 
                 var randomWordIndex = Math.floor(Math.random() * this.wordArray.length);
                 var randomWord = this.wordArray[randomWordIndex];
                 this.wordArray.splice(randomWordIndex, 1);
 
                 newCardP.text(randomWord);
+                newCardBack.attr('word', randomWord);
 
                 newCardFront.append(newCardP);
                 newCard.append(newCardFront, newCardBack);
@@ -60,6 +63,4 @@ class Card{
         }
         
     }
-
- 
 }
