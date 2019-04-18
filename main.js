@@ -13,6 +13,8 @@ function initializeApp() {
     generateBoard = new Card();
     generateBoard.constructCard();
     $('.submitbtn').click(player1.getInputVal);
+    $('.submitbtn').click(player2.getInputVal);
+    $('.cardback').click(new CardBackClickd);
     newGame.addNewPlayer(player1);
     newGame.addNewPlayer(player2);
 }
@@ -36,6 +38,15 @@ class Player {
 
 }
 
+class CardBackClickd {
+    constructor() {
+
+    }
+    clickHandler() {
+        $('.cardback').click()
+    }
+
+}
 
 class Keycards {
     constructor( ) { 
