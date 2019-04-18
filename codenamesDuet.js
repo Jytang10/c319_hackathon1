@@ -123,7 +123,9 @@ class Codenames{
                     p2: {
                         agentsRemaining: 8
                     }
-                }
+                },
+                clue:null,
+                number:null
             }
             for(var x = 0; x < 5; x++){
                 for ( var y = 0; y< 5; y++){
@@ -145,21 +147,18 @@ class Codenames{
     handleFirebaseUpdate( data ){
         console.log('new data is ', data);
         //do something with the data
-
+        $("#clueDisplay").text(data.clue);
+        $("#numberDisplay").text(data.number);
+        this.updateDB(data);
     }
     updateDB(){
         this.firebase.saveState(this.data)
     }
 
-    // addNewPlayer(){
-    //     this.data.players.push(this.newPlayer);
-    //     this.updateDB();
-    // }
- 
-
     createCard() {
         this._card = new Cards()
     }
+<<<<<<< HEAD
 
 
 
@@ -192,3 +191,6 @@ class Codenames{
         
     }
 }
+=======
+}
+>>>>>>> origin/firebase-css

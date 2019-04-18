@@ -29,6 +29,7 @@ function initializeApp() {
         $('.cover').hide();
     }
     
+<<<<<<< HEAD
     
     
 
@@ -38,6 +39,29 @@ function clickHandler() {
     debugger
     $('.cardback').on('click', newGame.cardClicked);
 }
+=======
+    function sendClueMessage(){
+        $('.submitbtn').click(function(){
+            console.log('saving');
+            newGame.updateDB({
+                clue:$('#clue > input[name=yourClue]').val(),
+                number:$('#number > input[name=yourNumber]').val()
+            });
+        });
+    }
+
+
+}
+
+
+
+// getInputVal() {
+//     this.clue = $('.clueinput').val();
+//     this.number = $('.numberinput').val();
+//     console.log('this.clue', this.clue);
+//     console.log('this.number', this.number);
+// }
+>>>>>>> origin/firebase-css
 
 
 
