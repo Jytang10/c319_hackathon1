@@ -44,12 +44,6 @@ class Player {
     constructor(name) {
         this.name = name;
     }
-    // getInputVal() {
-    //     this.clue = $('.clueinput').val();
-    //     this.number = $('.numberinput').val();
-    //     console.log('this.clue', this.clue);
-    //     console.log('this.number', this.number);
-    // }
     getName(){
         return this.name;
     }

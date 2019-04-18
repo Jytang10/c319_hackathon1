@@ -45,7 +45,6 @@ class Codenames{
     }
     handleInitialGameState( data ){
          //initial game state
-         debugger;
         if (data && data.players) {
             this.data = data;
             this.data.players.push(this.newPlayer);
@@ -54,7 +53,6 @@ class Codenames{
             this.data = {
                 clue:null,
                 number:null,
-                turn: 9,
                 currentPlayer: 0,
                 players : [this.newPlayer],
                 words: [],
@@ -124,17 +122,6 @@ class Codenames{
         this.data.number = number;
         this.updateDB(this.data);
     }
-
-    changeTurnCounter(turnValue){
-        this.data.turn = turnValue;
-        this.updateDB(this.data);
-    }
-
-    // addNewPlayer(){
-    //     this.data.players.push(this.newPlayer);
-    //     this.updateDB();
-    // }
- 
 
     createCard() {
         this._card = new Cards()
