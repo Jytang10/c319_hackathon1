@@ -33,11 +33,15 @@ class Card{
     }
 
     constructCard() {
-        // return;
+        debugger
         var counter = 1;
+        var newArray = [];
 
         for (var rowI = 0; rowI < 5; rowI++) {
-            var newRow = $('<div>').addClass('cardset row'); 
+            var newRow = $('<div>').addClass('cardset row');
+        
+            var newP1Array = [];
+            var newP2Array = [];
 
             for (var cardI = 0; cardI < 5; cardI++) {
                 var newCard = $('<div>').addClass('card');
@@ -45,11 +49,16 @@ class Card{
                 var newCardBack = $('<div>').addClass('cardback');
                 var newCardP = $('<p>').addClass('word');
 
-                newCardBack.addClass('num' + counter++);
+                newCardBack.addClass('num' + counter); 
 
                 var randomWordIndex = Math.floor(Math.random() * this.wordArray.length);
                 var randomWord = this.wordArray[randomWordIndex];
                 this.wordArray.splice(randomWordIndex, 1);
+
+                newP1Array[i].position = 'num' + counter;
+                newP1Array[i].p1State = 'innocent';
+                newP2Array[i].position = 'num' + counter++;
+                newP2Array[i].p2State = 'innocent';
 
                 newCardP.text(randomWord);
 
@@ -58,7 +67,9 @@ class Card{
                 newRow.append(newCard);
             }
             $('.gamearea .cards').append(newRow);
+            newArray.push(newP1Array);
+            newArray.push(newP2Array);
         }
-        
+        console.log(newArray)
     }
 }
