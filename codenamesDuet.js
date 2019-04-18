@@ -123,9 +123,7 @@ class Codenames{
                     p2: {
                         agentsRemaining: 8
                     }
-                },
-                clue:null,
-                number:null
+                }
             }
             for(var x = 0; x < 5; x++){
                 for ( var y = 0; y< 5; y++){
@@ -143,22 +141,29 @@ class Codenames{
         //otherwise, just update your local data with the firebase data and rewrite board
 
     }
+
+    getData() {
+        return this.data;
+    }
     
     handleFirebaseUpdate( data ){
         console.log('new data is ', data);
         //do something with the data
-        $("#clueDisplay").text(data.clue);
-        $("#numberDisplay").text(data.number);
-        this.updateDB(data);
+
     }
     updateDB(){
         this.firebase.saveState(this.data)
     }
 
+    // addNewPlayer(){
+    //     this.data.players.push(this.newPlayer);
+    //     this.updateDB();
+    // }
+ 
+
     createCard() {
         this._card = new Cards()
     }
-<<<<<<< HEAD
 
 
 
@@ -183,14 +188,27 @@ class Codenames{
 // }
 
     
-    cardClicked() {
+    cardClicked(event) {
         // if (this.data.currentPlayer = 0) {
         //     var clickedButton = $(this).attr('numpos');
-            console.log('clickedButton', this.data.gameBoard)
-            console.log('position', $(this).text());
+        var clickedCardNum = event.currentTarget.attributes[1].value;
+        var clickedCardX = event.currentTarget.attributes[2].value;
+        var clickedCardY = event.currentTarget.attributes[3].value;
+        var clickedCardClass = $(`[num~=${clickedCardNum}]`);
+        var fetchData = this.data;
+        var gBoard = fetchData.gameBoard;
+        console.log('clicked num', clickedCardClass);
+        console.log('gboard is ',gBoard);
+        console.log(event)
+        console.log('gboard coord is', gBoard[clickedCardY][clickedCardX].p1State)
+        if (gBoard[clickedCardY][clickedCardX].p1State === 'innocent') {
+            clickedCardClass.css({'background-color': 'yellow'});
+        } else if (gBoard[clickedCardY][clickedCardX].p1State === 'assassin') {
+            clickedCardClass.css({'background-color': 'black'});
+        } else if (gBoard[clickedCardY][clickedCardX].p1State === 'agent') {
+            clickedCardClass.css({'background-color': 'green'});
+        }
+        
         
     }
 }
-=======
-}
->>>>>>> origin/firebase-css

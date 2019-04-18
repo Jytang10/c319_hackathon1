@@ -29,17 +29,14 @@ function initializeApp() {
         $('.cover').hide();
     }
     
-<<<<<<< HEAD
     
     
 
 }
 
 function clickHandler() {
-    debugger
-    $('.cardback').on('click', newGame.cardClicked);
+    $('.cards').on('click', '.cardback', newGame.cardClicked);
 }
-=======
     function sendClueMessage(){
         $('.submitbtn').click(function(){
             console.log('saving');
@@ -51,7 +48,7 @@ function clickHandler() {
     }
 
 
-}
+
 
 
 
@@ -61,7 +58,6 @@ function clickHandler() {
 //     console.log('this.clue', this.clue);
 //     console.log('this.number', this.number);
 // }
->>>>>>> origin/firebase-css
 
 
 
