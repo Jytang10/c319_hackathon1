@@ -5,15 +5,19 @@ var name;
 var newGame;
 var generateBoard;
 function initializeApp() {
-    $('.cover').hide();
+    name = $('.nameinput').val(); //add
+    $('.coverbtn').click(closeLandingPage) //add
     // name = prompt("What's your name?");
-    newGame = new Codenames(name);
+    newGame = new Codenames(new Player(name));
     generateBoard = new Card();
     generateBoard.constructCard();
      //add click handler to landing page 'start' button
     // $('.submitbtn').click(newGame._player.getInputVal);
     // newGame.addNewPlayer(player1);
     // newGame.addNewPlayer(player2);
+    function closeLandingPage() { //add
+        $('.cover').hide();
+    }
 
 }
 
