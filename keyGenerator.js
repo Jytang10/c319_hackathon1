@@ -48,7 +48,6 @@ class keyGenerator{
             this.p1SinArray.push('.num' + this.numArray[randNum]);
             this.numArray.splice(randNum, 1);
         }
-        console.log(this.p1AgentArray);
     }
 
     p2AssignRole() {
