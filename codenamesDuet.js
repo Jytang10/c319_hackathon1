@@ -101,11 +101,9 @@ class Codenames{
     
         console.log('this data is ', data);
         //do something with the data
-        // debugger;
         $("#clueDisplay").text(data.clue);
         $("#numberDisplay").text(data.number);
         this.updateDB(data);
-        // console.log('this data is: ', data);
     }
     updateDB(data){
         this.firebase.saveState(data);
