@@ -7,7 +7,10 @@ var generateBoard;
 function initializeApp() {
     $('.cover').hide();
     name = prompt("What's your name?");
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/keyGenerator
     newGame = new Codenames(new Player(name));
     generateBoard = new Card();
     generateBoard.constructCard();
