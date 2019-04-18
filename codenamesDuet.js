@@ -35,6 +35,7 @@ class Codenames{
             'snake',
             'break',
             'battle'
+
         ];
         this.data = null;
     }
