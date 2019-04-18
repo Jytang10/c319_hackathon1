@@ -2,13 +2,13 @@
 $(document).ready(initializeApp);
 
 var newGame;
+var newGameCodenames
 var generateBoard;
 var player1;
 var player2;
 var name;
 
 function initializeApp() {
-    debugger
     $('.coverbtn').click(closeLandingPage);
     // $('.cover').hide();
     // name = prompt("What's your name?");
@@ -20,21 +20,24 @@ function initializeApp() {
     // newGame.addNewPlayer(player1);
     // newGame.addNewPlayer(player2);
     function closeLandingPage() {
+        
         name = $('.nameinput').val();
         newGame = new Codenames(new Player(name));
         generateBoard = new Card();
         generateBoard.constructCard();
+        clickHandler();
         $('.cover').hide();
     }
+    
+    
+    
 
 }
 
-// getInputVal() {
-//     this.clue = $('.clueinput').val();
-//     this.number = $('.numberinput').val();
-//     console.log('this.clue', this.clue);
-//     console.log('this.number', this.number);
-// }
+function clickHandler() {
+    debugger
+    $('.cardback').on('click', newGame.cardClicked);
+}
 
 
 
