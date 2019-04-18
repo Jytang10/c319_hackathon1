@@ -41,7 +41,7 @@
             <div class = "logo col-2"></div>
             <div class = "player player1 col-3">
                 <div class= "playertitle">player 1</div>
-                <div class="playericon col">Player 1 Clue here</div>
+                <div class="playericon col">Player 1 Turn Highlight Here</div>
             </div>
             <div class = "keycardset col-4">
                 <div class = "keycardtitle row">
@@ -87,7 +87,7 @@
             </div>
             <div class = "player player2 col-3">
                 <div class= "playertitle">player 2</div>
-                <div class="playericon col">Player 2 clue here</div>
+                <div class="playericon col">Player 2 Turn Highlight Here</div>
             </div>
         </div>
     </header>
@@ -98,10 +98,10 @@
         <div class = "sidebar col-2">
             <div class = "stats"><h4>Clue from other player<h4></div>
             <div class= "cluearea"><p>Clue</p>
-                <div class="clue output"><p class = "clue"></p></div>
+                <div class="clue output" id='clueDisplay'><p class = "clue"></p></div>
             </div>
             <div class= "cluearea"><p>Number</p>
-                <div class="number output"><p class = "number"></p></div>
+                <div class="number output" id='numberDisplay'><p class = "number"></p></div>
             </div>
             <div class = "timertoken"><h4>Left time token</h4></div>
             <div class = "tokenvalue"><p class = "token">ex. 7</p></div>
@@ -113,8 +113,8 @@
         </div>
         <div class = "gameareainput row">
             <div class = "input">
-                <label id="clue">Clue : <input type = "text" class="clueinput" id="clue"></label>
-                <label id="number">Number : <input type = "number" class="numberinput" id="number"></label>
+                <label id="clue">Clue : <input type = "text" class="clueinput" id="clue" name='yourClue'></label>
+                <label id="number">Number : <input type = "number" class="numberinput" id="number" name='yourNumber'></label>
                 <div class = 'submit'><button class='submitbtn'>Submit</button></div>
             </div>
         </div>

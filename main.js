@@ -8,7 +8,6 @@ var player2;
 var name;
 
 function initializeApp() {
-    debugger
     $('.coverbtn').click(closeLandingPage);
     // $('.cover').hide();
     // name = prompt("What's your name?");
@@ -26,8 +25,21 @@ function initializeApp() {
         generateBoard.constructCard();
         $('.cover').hide();
     }
+    
+    function sendClueMessage(){
+        $('.submitbtn').click(function(){
+            console.log('saving');
+            newGame.updateDB({
+                clue:$('#clue > input[name=yourClue]').val(),
+                number:$('#number > input[name=yourNumber]').val()
+            });
+        });
+    }
+
 
 }
+
+
 
 // getInputVal() {
 //     this.clue = $('.clueinput').val();

@@ -122,7 +122,9 @@ class Codenames{
                     p2: {
                         agentsRemaining: 8
                     }
-                }
+                },
+                clue:null,
+                number:null
             }
             for(var x = 0; x < 5; x++){
                 for ( var y = 0; y< 5; y++){
@@ -144,69 +146,14 @@ class Codenames{
     handleFirebaseUpdate( data ){
         console.log('new data is ', data);
         //do something with the data
-
+        // $("#clueDisplay").text(data.clue);
+		// $("#idDisplay").text(data.number);
     }
     updateDB(){
         this.firebase.saveState(this.data)
     }
 
-    // addNewPlayer(){
-    //     this.data.players.push(this.newPlayer);
-    //     this.updateDB();
-    // }
- 
-
     createCard() {
         this._card = new Cards()
     }
 }
-
-
-// class Cards{
-//     constructor( initialWord, p1State, p2State){
-//         this.data = {
-//             word: initialWord,
-//             p1State: p1State,
-//             p2State: p2State
-//         }
-//     }
-//     updateData( newData ){
-//         this.data.word = newData.word;
-//         this.data.p1State = newData.p1State;
-//         this.data.p2State = newData.p2State;
-//         this.card.text( this.data.word);
-//     }
-
-//     render(){
-//         this.card = $("<div>").text(this.data.word);
-//     }
-// }
-
-// var sampleGameState = {
-//     currentPlayer: null,
-//     players: [],
-//     gameBoard: [
-//         ['','','','','',''],
-//         ['','','','','',''],
-//         ['','','','','',''],
-//         ['','','','','',''],
-//         ['','','','','',''],
-//     ],
-//     playerStats: {
-//         p1: {
-//             agentsRemaining: 5
-//         }
-//     }
-// }
-// // after first player joins
-// var sampleGameState = {
-//     currentPlayer: null,
-//     players: ['james'],
-//     gameBoard: [
-//         [{word: 'moscow', p1State: 'innocent', p2State:'assassin'},'','','','',''],
-//         ['','','','','',''],
-//         ['','','','','',''],
-//         ['','','','','',''],
-//         ['','','','','',''],
-//     ]
-// }
