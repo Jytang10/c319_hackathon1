@@ -94,10 +94,9 @@ class Codenames{
          //initial game state
         if (data) {
             this.data = data;
-            this.data.players=this.players;
+            this.data.players = this.players;
             console.log(this.data.players);
         } else {
-            debugger;
             var playerNames = [];
             for(var i=0;i<this.players.length;i++){
                 var name = this.players[i].getName();
