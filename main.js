@@ -19,34 +19,14 @@ function initializeApp() {
         clickHandler();
         $('.cover').hide();
     }
-<<<<<<< HEAD
-=======
-    
-    
-    
-
-}
-
-function clickHandler() {
-    $('.cards').on('click', '.cardback', newGame.cardClicked);
-}
-    function sendClueMessage(){
-        $('.submitbtn').click(function(){
-            console.log('saving');
-            newGame.updateDB({
-                clue:$('#clue > input[name=yourClue]').val(),
-                number:$('#number > input[name=yourNumber]').val()
-            });
-        });
+    function clickHandler() {
+        $('.cards').on('click', '.cardback', newGame.cardClicked);
     }
->>>>>>> origin/handleClicks
 
     $('.submitbtn').click(function(){
         console.log('saving');
         newGame.giveNewClue($('#clue > input[name=yourClue]').val(),$('#number > input[name=yourNumber]').val());
     
-
-<<<<<<< HEAD
         if(newGame.data.currentPlayer) {
             newGame.data.currentPlayer = 0;
             $('#clue').show();
@@ -58,9 +38,7 @@ function clickHandler() {
         }
     });
 }
-=======
 
->>>>>>> origin/handleClicks
 
 class Player {
     constructor(name) {

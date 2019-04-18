@@ -38,56 +38,6 @@ class Codenames{
         ];
 
         this.data = null;
-<<<<<<< HEAD
-=======
-        this.cardClicked = this.cardClicked.bind(this);
-        // this.data = {
-        //     currentPlayer: 0,
-        //     players: [],
-        //     words: [],
-        //     gameBoard1: 
-        //         [
-        //             [{position: '1',p1State:'assassin'},{position: '2',p1State:'assassin'},{position: '3',p1State:'assassin'},{position: '4',p1State:'innocent'},{position: '5',p1State:'innocent'}],
-        //             [{position: '6',p1State:'agent'},{position: '7',p1State:'agent'},{position: '8',p1State:'agent'},{position: '9',p1State:'innocent'},{position: '10',p1State:'innocent'}],
-        //             [{position: '11',p1State:'agent'},{position: '12',p1State:'agent'},{position: '13',p1State:'agent'},{position: '14',p1State:'innocent'},{position: '15',p1State:'innocent'}],
-        //             [{position: '16',p1State:'agent'},{position: '17',p1State:'agent'},{position: '18',p1State:'agent'},{position: '19',p1State:'innocent'},{position: '20',p1State:'innocent'}],
-        //             [{position: '21',p1State:'agent'},{position: '22',p1State:'agent'},{position: '23',p1State:'agent'},{position: '24',p1State:'innocent'},{position: '25',p1State:'innocent'}]
-        //         ], 
-        // //    gameBoard2: 
-        // //     [
-        // //     [{position: '1',p2State:'assassin'},{position: '2',p2State:'assassin'},{position: '3',p2State:'assassin'},{position: '4',p2State:'innocent'},{position: '5',p2State:'innocent'}],
-        // //     [{position: '6',p2State:'agent'},{position: '7',p2State:'agent'},{position: '8',p2State:'agent'},{position: '9',p2State:'innocent'},{position: '10',p2State:'innocent'}],
-        // //     [{position: '11',p2State:'agent'},{position: '12',p2State:'agent'},{position: '13',p2State:'agent'},{position: '14',p2State:'innocent'},{position: '15',p2State:'innocent'}],
-        // //     [{position: '16',p2State:'agent'},{position: '17',p2State:'agent'},{position: '18',p2State:'agent'},{position: '19',p2State:'innocent'},{position: '20',p2State:'innocent'}],
-        // //     [{position: '21',p2State:'agent'},{position: '22',p2State:'agent'},{position: '23',p2State:'agent'},{position: '24',p2State:'innocent'},{position: '25',p2State:'innocent'}]
-        // //      ],
-        //     playerStats: {
-        //         p1: {
-        //             agentsRemaining: 8
-        //         },
-        //         p2: {
-        //             agentsRemaining: 8
-        //         }
-        //     }
-        // }
-        // for(var x = 0; x < 5; x++){
-        //     for ( var y = 0; y< 5; y++){
-        //         var randomIndex = Math.floor(this.wordArray.length * Math.random());
-        //         var randomWord = this.wordArray[ randomIndex];
-        //         this.wordArray.splice(randomIndex,1);
-        //         this.data.gameBoard1[y][x].word = randomWord;
-        //     }
-        // }
-        // for(var x = 0; x < 5; x++){
-        //     for ( var y = 0; y< 5; y++){
-        //         var randomIndex = Math.floor(this.wordArray.length * Math.random());
-        //         var randomWord = this.wordArray[ randomIndex];
-        //         this.wordArray.splice(randomIndex,1);
-        //         this.data.gameBoard2[y][x].word = randomWord;
-        //     }
-        // }
-
->>>>>>> origin/handleClicks
     }
     firebaseLoaded(){
         // this.firebase.saveState(this.data)
@@ -122,11 +72,7 @@ class Codenames{
                     p2: {
                         agentsRemaining: 8
                     }
-<<<<<<< HEAD
                 },
-=======
-                }
->>>>>>> origin/handleClicks
             }
             if(this.data.players.length === 0){
                 for(var x = 0; x < 5; x++){
@@ -154,14 +100,11 @@ class Codenames{
     handleFirebaseUpdate( data ){     //checks firebase data and makes changes
         console.log('this data is ', data);
         //do something with the data
-<<<<<<< HEAD
         $("#clueDisplay").text(data.clue);
         $("#numberDisplay").text(data.number);
         // this.checkCurrentPlayer(data.currentPlayer)
         this.updateDB(data);
-=======
 
->>>>>>> origin/handleClicks
     }
 
     checkCurrentPlayer(playerNum){
