@@ -18,26 +18,30 @@ function initializeApp() {
     // $('.submitbtn').click(newGame._player.getInputVal);
     // newGame.addNewPlayer(player1);
     // newGame.addNewPlayer(player2);
+
     function closeLandingPage() {
         name = $('.nameinput').val();
+        var wholeObject= {
+            players: {},
+            gameboard: {}
+        }
         newGame = new Codenames(new Player(name));
         generateBoard = new Card();
         generateBoard.constructCard();
         $('.cover').hide();
     }
-    
-    function sendClueMessage(){
-        $('.submitbtn').click(function(){
-            console.log('saving');
-            newGame.updateDB({
-                clue:$('#clue > input[name=yourClue]').val(),
-                number:$('#number > input[name=yourNumber]').val()
-            });
+
+    $('.submitbtn').click(function(){
+        console.log('saving');
+        debugger;
+        newGame.handleFirebaseUpdate({
+            clue:$('#clue > input[name=yourClue]').val(),
+            number:$('#number > input[name=yourNumber]').val()
         });
-    }
-
-
+    });
 }
+
+
 
 
 
