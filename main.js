@@ -6,12 +6,8 @@ var newGame;
 var generateBoard;
 function initializeApp() {
     $('.cover').hide();
-    name = prompt("What's your name?");
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/keyGenerator
-    newGame = new Codenames(new Player(name));
+    // name = prompt("What's your name?");
+    newGame = new Codenames(name);
     generateBoard = new Card();
     generateBoard.constructCard();
      //add click handler to landing page 'start' button
@@ -33,12 +29,12 @@ function initializeApp() {
 
 class Player {
     constructor(name) {
-        this.counts = 9; //left turns
-        this.playerKeycard = [];
-        // var newKeycards = new Keycards();
-        // this.playerKeycard.push(newKeycards.getKeycards());
-        this.clue;
-        this.number;
+        // this.counts = 9; //left turns
+        // this.playerKeycard = [];
+        // // var newKeycards = new Keycards();
+        // // this.playerKeycard.push(newKeycards.getKeycards());
+        // this.clue;
+        // this.number;
         this.name = name;
     }
     getInputVal() {
