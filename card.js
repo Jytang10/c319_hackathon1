@@ -34,7 +34,6 @@ class Card{
     }
 
     constructCard() {
-        debugger
         var counter = 1;
         var newArray = [[],[]];
 
