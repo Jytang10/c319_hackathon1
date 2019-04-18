@@ -1,13 +1,16 @@
 
 $(document).ready(initializeApp);
 
-var name;
 var newGame;
 var generateBoard;
+var player1;
+var player2;
+var name;
+
 function initializeApp() {
     $('.cover').hide();
-    // name = prompt("What's your name?");
-    newGame = new Codenames(name);
+    name = prompt("What's your name?");
+    newGame = new Codenames(new Player(name));
     generateBoard = new Card();
     generateBoard.constructCard();
      //add click handler to landing page 'start' button
