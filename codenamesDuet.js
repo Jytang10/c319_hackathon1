@@ -44,9 +44,10 @@ class Codenames{
     }
     handleInitialGameState( data ){
          //initial game state
+         debugger;
         if (data && data.players) {
             this.data = data;
-            this.data.players.push(this.newPlayer)
+            this.data.players.push(this.newPlayer);
             console.log('player list',this.data.players);
         } else {
             this.data = {
