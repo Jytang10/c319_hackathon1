@@ -9,7 +9,11 @@ function initializeApp() {
     newGame = new Codenames();
     generateBoard = new Card();
     generateBoard.constructCard();
-    
+
+    var player1 = new Player(1);
+    var player2 = new Player(2);
+    newGame.addNewPlayer(player1);
+    newGame.addNewPlayer(player2);
 }
 
 class Player {
@@ -36,7 +40,7 @@ class Keycards {
     }
 }
 
-var player1 = new Player(1);
-var player2 = new Player(2);
-console.log('player1', player1);
-console.log('player2', player2);
+// var player1 = new Player(1);
+// var player2 = new Player(2);
+// console.log('player1', player1);
+// console.log('player2', player2);

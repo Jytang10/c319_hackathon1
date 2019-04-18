@@ -67,22 +67,47 @@ class Codenames{
         //     message: 'codenames'
         // }
 
+        // //initial game state
+        // this.data = {
+        //     currentPlayer: null,
+        //     players: [],
+        //     gameBoard: [
+        //         ['','','','','',''],
+        //         ['','','','','',''],
+        //         ['','','','','',''],
+        //         ['','','','','',''],
+        //         ['','','','','',''],
+        //     ],
+        //     playerStats: {
+        //         p1: {
+        //             agentsRemaining: 8
+        //         },
+        //         p2: {
+        //             agentsRemaining: 8
+        //         }
+        //     }
+            
+        // }
+
+        this.data = data;
+           //initial game state
         this.data = {
             currentPlayer: null,
             players: [],
+            words: [],
             gameBoard: [
-                [{position: 'num1',p1State: 'innocent', p2State:'assassin'},{position: 'num2',p1State: 'innocent', p2State:'assassin'},{position: 'num3',p1State: 'innocent', p2State:'assassin'},{position: 'num4',p1State: 'innocent', p2State:'agent'},{position: 'num5',p1State: 'innocent', p2State:'agent'}],
-                [{position: 'num6',p1State: 'innocent', p2State:'agent'},{position: 'num7',p1State: 'innocent', p2State:'assassin'},{position: 'num8',p1State: 'innocent', p2State:'assassin'},{position: 'num9',p1State: 'innocent', p2State:'assassin'},{position: 'num10',p1State: 'innocent', p2State:'assassin'}],
-                [{position: 'num11',p1State: 'innocent', p2State:'agent'},{position: 'num12',p1State: 'innocent', p2State:'assassin'},{position: 'num13',p1State: 'innocent', p2State:'assassin'},{position: 'num14',p1State: 'innocent', p2State:'assassin'},{position: 'num15',p1State: 'innocent', p2State:'assassin'}],
-                ['','','','','',''],
-                ['','','','','',''],
+                [{position: 'num1',p1State:'innocent',p2State:'assassin'},{position: 'num2',p1State:'innocent',p2State:'assassin'},{position: 'num3',p1State:'innocent',p2State:'assassin'},{position: 'num4',p1State:'innocent',p2State:'agent'},{position: 'num5',p1State:'innocent',p2State:'agent'}],
+                [{position: 'num6',p1State:'assassin',p2State:'innocent'},{position: 'num7',p1State:'assassin',p2State:'innocent'},{position: 'num8',p1State:'assassin',p2State:'innocent'},{position: 'num9',p1State:'innocent',p2State:'agent'},{position: 'num10',p1State:'innocent',p2State:'agent'}],
+                [{position: 'num11',p1State:'innocent',p2State:'agent'},{position: 'num12',p1State:'innocent',p2State:'agent'},{position: 'num13',p1State:'innocent',p2State:'agent'},{position: 'num14',p1State:'agent',p2State:'innocent'},{position: 'num15',p1State:'agent',p2State:'innocent'}],
+                [{position: 'num16',p1State:'agent',p2State:'innocent'},{position: 'num17',p1State:'agent',p2State:'innocent'},{position: 'num18',p1State:'agent',p2State:'innocent'},{position: 'num19',p1State:'agent',p2State:'innocent'},{position: 'num20',p1State:'agent',p2State:'innocent'}],
+                [{position: 'num21',p1State:'agent',p2State:'innocent'},{position: 'num22',p1State:'innocent',p2State:'innocent'},{position: 'num23',p1State:'innocent',p2State:'innocent'},{position: 'num24',p1State:'innocent',p2State:'innocent'},{position: 'num25',p1State:'innocent',p2State:'innocent'}],
             ],
             playerStats: {
                 p1: {
-                    agentsRemaining: 9
-                }
+                    agentsRemaining: 8
+                },
                 p2: {
-                    agentsRemaining: 9
+                    agentsRemaining: 8
                 }
             }
             
@@ -108,7 +133,12 @@ class Codenames{
 */
     }
     updateDB(){
-        this.firebase.saveState(/*data here*/)
+        this.firebase.saveState(this.data)
+    }
+
+    addNewPlayer(player){
+        this.data.players.push(player);
+        this.updateDB();
     }
 
     createCard() {
