@@ -45,7 +45,7 @@ class keyGenerator{
 
         for (var p1Jindex = 0; p1Jindex < 3; p1Jindex++) {
             var randNum = Math.floor(Math.random() * this.numArray.length);
-            this.p1AgentArray.push('.num' + this.numArray[randNum]);
+            this.p1SinArray.push('.num' + this.numArray[randNum]);
             this.numArray.splice(randNum, 1);
         }
         console.log(this.p1AgentArray);
@@ -61,7 +61,7 @@ class keyGenerator{
 
         for (var p2Jindex = 0; p2Jindex < 3; p2Jindex++) {
             var randNum = Math.floor(Math.random() * this.numArray.length);
-            this.p2AgentArray.push('.num' + this.numArray[randNum]);
+            this.p2SinArray.push('.num' + this.numArray[randNum]);
             this.numArray.splice(randNum, 1);
         }
     }

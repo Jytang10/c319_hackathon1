@@ -12,12 +12,9 @@ function initializeApp() {
     newGame = new Codenames();
     generateBoard = new Card();
     generateBoard.constructCard();
-<<<<<<< HEAD
-=======
     $('.submitbtn').click(player1.getInputVal);
     newGame.addNewPlayer(player1);
     newGame.addNewPlayer(player2);
->>>>>>> origin/css3
 }
 
 class Player {
