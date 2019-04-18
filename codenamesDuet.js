@@ -39,6 +39,7 @@ class Codenames{
 
         this.data = null;
         this.cardClicked = this.cardClicked.bind(this);
+        this.giveNewClue = this.giveNewClue.bind(this);
         // this.data = {
         //     currentPlayer: 0,
         //     players: [],
@@ -111,7 +112,7 @@ class Codenames{
                 words: [],
                 gameBoard: [
                     [{position: '1',p1State:'assassin',p2State: 'agent'},{position: '2',p1State:'assassin',p2State: 'agent'},{position: '3',p1State:'assassin',p2State: 'assassin'},{position: '4',p1State:'innocent',p2State: 'innocent'},{position: '5',p1State:'innocent',p2State: 'innocent'}],
-                    [{position: '6',p1State:'agent',p2State: 'innocent'},{position: '7',p1State:'agent',p2State: 'innocent'},{position: '8',p1State:'agent',p2State: 'innocent'},{position: '9',p1State:'innocent',p2State: 'innocent'},{position: '10',p1State:'innocent',p2State: 'innocent'}],
+                    [{position: '6',p1State:'innocent',p2State: 'innocent'},{position: '7',p1State:'innocent',p2State: 'innocent'},{position: '8',p1State:'innocent',p2State: 'innocent'},{position: '9',p1State:'innocent',p2State: 'innocent'},{position: '10',p1State:'innocent',p2State: 'innocent'}],
                     [{position: '11',p1State:'agent',p2State: 'innocent'},{position: '12',p1State:'agent',p2State: 'innocent'},{position: '13',p1State:'agent',p2State: 'innocent'},{position: '14',p1State:'innocent',p2State: 'innocent'},{position: '15',p1State:'innocent',p2State: 'innocent'}],
                     [{position: '16',p1State:'agent',p2State: 'innocent'},{position: '17',p1State:'agent',p2State: 'innocent'},{position: '18',p1State:'agent',p2State: 'innocent'},{position: '19',p1State:'innocent',p2State: 'innocent'},{position: '20',p1State:'innocent',p2State: 'innocent'}],
                     [{position: '21',p1State:'agent',p2State: 'innocent'},{position: '22',p1State:'agent',p2State: 'innocent'},{position: '23',p1State:'agent',p2State: 'innocent'},{position: '24',p1State:'innocent',p2State: 'innocent'},{position: '25',p1State:'innocent',p2State: 'innocent'}]
@@ -146,23 +147,42 @@ class Codenames{
         return this.data;
     }
     
-    handleFirebaseUpdate( data ){
-        console.log('new data is ', data);
+    handleFirebaseUpdate( data ){     //checks firebase data and makes changes
+        console.log('this data is ', data);
         //do something with the data
+        $("#clueDisplay").text(data.clue);
+        $("#numberDisplay").text(data.number);
+        // this.checkCurrentPlayer(data.currentPlayer)
+        this.updateDB(data);
 
     }
-    updateDB(){
-        this.firebase.saveState(this.data)
+
+    checkCurrentPlayer(playerNum){
+        if(playerNum===this.myPlayerNum){
+            $(".gameareainput").show();
+        } else {
+            $(".gameareainput").hide();
+        }
     }
 
-    // addNewPlayer(){
-    //     this.data.players.push(this.newPlayer);
-    //     this.updateDB();
-    // }
- 
+    updateDB(data){
+        this.firebase.saveState(data);
+    }
+
+    giveNewClue( word, number){
+        this.data.clue = word;
+        this.data.number = number;
+        this.updateDB(this.data);
+    }
 
     createCard() {
         this._card = new Cards()
+    }
+
+    giveNewClue( word, number){
+        this.data.clue = word;
+        this.data.number = number;
+        this.updateDB(this.data);
     }
 
 

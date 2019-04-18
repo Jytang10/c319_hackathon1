@@ -28,6 +28,20 @@ function initializeApp() {
         clickHandler();
         $('.cover').hide();
     }
+    $('.submitbtn').click(function(){
+        console.log('saving');
+        newGame.giveNewClue($('#clue > input[name=yourClue]').val(),$('#number > input[name=yourNumber]').val());
+    
+        if(newGame.data.currentPlayer) {
+            newGame.data.currentPlayer = 0;
+            // $('#clue').show();
+            // $('#number').show();
+        } else {
+            newGame.data.currentPlayer = 1;
+            // $('#clue').hide();
+            // $('#number').hide();
+        }
+    });
     
     
     
