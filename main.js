@@ -13,10 +13,6 @@ function initializeApp() {
      //add click handler to landing page 'start' button
     $('.submitbtn').click(newGame._player.getInputVal);
     $('.cardback').click(generateBoard.cardclicked);
-=======
-var player1;
-var player2;
-var name;
 
 function initializeApp() {
     $('.cover').hide();
