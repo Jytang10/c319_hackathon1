@@ -14,15 +14,7 @@ function initializeApp() {
     newGame = new Codenames();
     generateBoard = new Card();
     generateBoard.constructCard();
-<<<<<<< HEAD
     $('.submitbtn').click(player1.getInputVal);
-=======
-
-    var player1 = new Player(1);
-    var player2 = new Player(2);
-    newGame.addNewPlayer(player1);
-    newGame.addNewPlayer(player2);
->>>>>>> origin/firebaseWork
 }
 
 class Player {
@@ -34,6 +26,8 @@ class Player {
         this.playerKeycard.push(newKeycards.getKeycards());
         this.clue;
         this.number;
+        newGame.addNewPlayer(player1);
+        newGame.addNewPlayer(player2);
     }
     getInputVal() {
         this.clue = $('.clueinput').val();
@@ -59,14 +53,7 @@ class Keycards {
     }
 }
 
-<<<<<<< HEAD
 // player1 = new Player(1);
 // player2 = new Player(2);
 console.log('player1', player1);
 console.log('player2', player2);
-=======
-// var player1 = new Player(1);
-// var player2 = new Player(2);
-// console.log('player1', player1);
-// console.log('player2', player2);
->>>>>>> origin/firebaseWork
