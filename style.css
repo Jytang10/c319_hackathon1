@@ -16,7 +16,7 @@
         /* make ' opacity : 1 ' to make it visible */
         z-index: 100;
         justify-content: center;
-        background-image: url("images/box.jpg");
+        background-image: url("images/main.jpg");
         background-repeat: no-repeat;
         background-size: 100% 100%;
     }
@@ -68,14 +68,18 @@
         text-align: center;
         font-size: 1.8rem;
     }
+    .mainpage {
+        background: radial-gradient(closest-side, yellow, rgb(103, 177, 43), green);
+        width: 100%;
+        height: 100%;
+    }
     .toparea {
-        background-color: lightblue;
+        /* background-color: lightblue; */
         height: 25vh;  
         text-align: center;
         font-family: 'Concert One', cursive;
     }
     .logo {
-        background-color: skyblue;
         background-image: url("images/logo2.jpg");
         background-repeat: no-repeat;
         background-size: 100% 100%;
@@ -110,21 +114,16 @@
         margin: 1px;
         border-radius: 5px;
     }
-    .playericon {
-        background-color: cornflowerblue;
-        height: 50%;
-        width: 50%;
+    .keycard1, .keycard10, .keycard18 {
+        background-color: black;
+        border: 1px solid white;
+    }
+    .keycard2, .keycard3, .keycard4, .keycard6, .keycard7, .keycard8, .keycard16, .keycard21, .keycard24  {
+        background-color: green;
     }
     .playertitle{
         margin-top: 5%;
         font-size: 1.5rem;
-    }
-    .playericon {
-        width: 50%;
-        height: 50%;
-        background-color:cornflowerblue;
-        margin-left: 25%;
-        margin-top: 5%;
     }
     .playertitle{
         margin-top: 2%;
@@ -133,33 +132,34 @@
     .playericon {
         width: 50%;
         height: 50%;
-        background-color:cornflowerblue;
+        background-color:rgb(239, 243, 16);
+        border-radius: 10px;
         margin-left: 25%;
         margin-top: 5%;
     }
     .sidebar {
         position: relative;
         text-align: center;
-        background-color: aquamarine;
+        background-color: #d1c8a0;
         height: 100%;  
         width: 17%;  
         font-family: 'Concert One', cursive;
     }
     .stats {
-        margin-top: 43px;
+        margin-top: 24px;
     }
     .timertoken {
-        margin-top: 43px;
+        margin-top: 24px;
     }
     .gamearea {
-        background-color: lightcoral;
+        /* background-color: lightcoral; */
         height: 60vh;  
         width: 100%; 
         margin-left: 0px;
         font-family: 'Concert One', cursive;
     }
     .gameareainput {
-        background-color: lightgray;
+        background: linear-gradient(to bottom, #f5f6f6 0%,#dbdce2 21%,#b8bac6 49%,#dddfe3 80%,#f5f6f6 100%);
         height: 15vh;
         width: 100%; 
         margin-left: 0px;
@@ -178,9 +178,10 @@
         position: absolute;
         width: 100%;
         height: 100%;
-        background-color: green;  
+        background-color: transparent;  
         border-radius:5px;
-        display: none;
+        opacity: 0.5
+        
         /* background-color/ display should change later */
     }
     .input {
