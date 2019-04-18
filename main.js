@@ -18,7 +18,6 @@ function initializeApp() {
     // newGame.addNewPlayer(player1);
     // newGame.addNewPlayer(player2);
 
-
 }
 
 // getInputVal() {

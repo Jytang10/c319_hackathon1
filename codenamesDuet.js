@@ -1,7 +1,8 @@
 
 class Codenames{
     constructor(firstPlayer) {
-        this.players = [firstPlayer];
+        this.players = [];
+        this.newPlayer = firstPlayer;
         this.displayCards = [];
         this._card;
         this._player = null;
@@ -104,7 +105,7 @@ class Codenames{
             }
             this.data = {
                 currentPlayer: null,
-                players : playerNames,
+                players : this.newPlayer,
                 words: [],
                 gameBoard: [
                     [{position: 'num1',p1State:'assassin'},{position: 'num2',p1State:'assassin'},{position: 'num3',p1State:'assassin'},{position: 'num4',p1State:'innocent'},{position: 'num5',p1State:'innocent'}],
@@ -127,10 +128,10 @@ class Codenames{
                     var randomIndex = Math.floor(this.wordArray.length * Math.random());
                     var randomWord = this.wordArray[ randomIndex];
                     this.wordArray.splice(randomIndex,1);
-                    this.data.gameBoard1[y][x].word = randomWord;
+                    this.data.gameBoard[y][x].word = randomWord;
                 }
             }
-        }        
+                
 
 
 
@@ -138,7 +139,9 @@ class Codenames{
         //if there is no current player / data, select 25 words and put them into firebase
             //then update firebase with new obj
         //otherwise, just update your local data with the firebase data and rewrite board
+
     }
+    
     handleFirebaseUpdate( data ){
         console.log('new data is ', data);
         //do something with the data
