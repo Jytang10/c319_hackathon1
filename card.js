@@ -33,6 +33,7 @@ class Card{
     }
 
     constructCard() {
+        // return;
         var counter = 1;
 
         for (var rowI = 0; rowI < 5; rowI++) {
