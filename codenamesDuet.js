@@ -1,4 +1,3 @@
-
 class Codenames{
     constructor(firstPlayer) {
         // this.players = [];

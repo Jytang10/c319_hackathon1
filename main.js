@@ -8,15 +8,24 @@ var player2;
 var name;
 
 function initializeApp() {
-    $('.cover').hide();
-    name = prompt("What's your name?");
-    newGame = new Codenames(new Player(name));
-    generateBoard = new Card();
-    generateBoard.constructCard();
+    debugger
+    $('.coverbtn').click(closeLandingPage);
+    // $('.cover').hide();
+    // name = prompt("What's your name?");
+    // newGame = new Codenames(new Player(name));
+    // generateBoard = new Card();
+    // generateBoard.constructCard();
      //add click handler to landing page 'start' button
     // $('.submitbtn').click(newGame._player.getInputVal);
     // newGame.addNewPlayer(player1);
     // newGame.addNewPlayer(player2);
+    function closeLandingPage() {
+        name = $('.nameinput').val();
+        newGame = new Codenames(new Player(name));
+        generateBoard = new Card();
+        generateBoard.constructCard();
+        $('.cover').hide();
+    }
 
 }
 
@@ -32,12 +41,12 @@ function initializeApp() {
 
 class Player {
     constructor(name) {
-        this.counts = 9; //left turns
-        this.playerKeycard = [];
-        // var newKeycards = new Keycards();
-        // this.playerKeycard.push(newKeycards.getKeycards());
-        this.clue;
-        this.number;
+        // this.counts = 9; //left turns
+        // this.playerKeycard = [];
+        // // var newKeycards = new Keycards();
+        // // this.playerKeycard.push(newKeycards.getKeycards());
+        // this.clue;
+        // this.number;
         this.name = name;
     }
     getInputVal() {
