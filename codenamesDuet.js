@@ -55,8 +55,12 @@ class Codenames{
         this.handleInitialGameState = this.handleInitialGameState.bind( this );
         this.firebaseLoaded = this.firebaseLoaded.bind(this);
         this.firebase = new CodenamesFBObject('CodenamesDuet', this.handleFirebaseUpdate, this.firebaseLoaded);
+<<<<<<< HEAD
         this.addNewPlayer = this.addNewPlayer.bind( this );
     
+=======
+        this.data;
+>>>>>>> origin/keyGenerator
     }
     firebaseLoaded(){
         this.firebase.getAllData( this.handleInitialGameState );
@@ -141,7 +145,8 @@ class Codenames{
     }
 
     addNewPlayer(player){
-        this.data.players.push(player);
+        var players = this.data.players
+        players.push(player);
         this.updateDB();
     }
 
