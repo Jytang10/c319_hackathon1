@@ -1,6 +1,5 @@
 class Codenames{
     constructor(firstPlayer) {
-        // this.players = [];
         this.newPlayer = firstPlayer;
         this.displayCards = [];
         this._card;
@@ -8,6 +7,7 @@ class Codenames{
         this.handleFirebaseUpdate = this.handleFirebaseUpdate.bind( this );
         this.handleInitialGameState = this.handleInitialGameState.bind( this );
         this.firebaseLoaded = this.firebaseLoaded.bind(this);
+        this.giveNewClue = this.giveNewClue.bind(this);
         this.firebase = new CodenamesFBObject('CodenamesDuet', this.handleFirebaseUpdate, this.firebaseLoaded);
         this.wordArray = [
             'pug',
@@ -45,23 +45,17 @@ class Codenames{
     }
     handleInitialGameState( data ){
          //initial game state
-       
+         debugger;
         if (data && data.players) {
             this.data = data;
-            this.data.players.push(this.newPlayer)
-            // var tempPlayer = this.data.players;
-            // var playerNames = [];
-            // debugger
-            // this.playerNames.push(tempPlayer);
-            // this.playerNames.push(this.newPlayer);
-            // this.data.players = playerNames;
-            // console.log('player list',this.data.players);
+            this.data.players.push(this.newPlayer);
+            this.data.currentPlayer = 1;
         } else {
-            // this.data.players.push(newPlayer);
             this.data = {
                 clue:null,
                 number:null,
-                currentPlayer: null,
+                turn: 9,
+                currentPlayer: 0,
                 players : [this.newPlayer],
                 words: [],
                 gameBoard: [
@@ -80,12 +74,14 @@ class Codenames{
                     }
                 },
             }
-            for(var x = 0; x < 5; x++){
-                for ( var y = 0; y< 5; y++){
-                    var randomIndex = Math.floor(this.wordArray.length * Math.random());
-                    var randomWord = this.wordArray[ randomIndex];
-                    this.wordArray.splice(randomIndex,1);
-                    this.data.gameBoard[y][x].word = randomWord;
+            if(this.data.players.length === 0){
+                for(var x = 0; x < 5; x++){
+                    for ( var y = 0; y< 5; y++){
+                        var randomIndex = Math.floor(this.wordArray.length * Math.random());
+                        var randomWord = this.wordArray[ randomIndex];
+                        this.wordArray.splice(randomIndex,1);
+                        this.data.gameBoard[y][x].word = randomWord;
+                    }
                 }
             }
         }
@@ -97,16 +93,36 @@ class Codenames{
 
     }
     
-    handleFirebaseUpdate( data ){
-    
+    handleFirebaseUpdate( data ){     //checks firebase data and makes changes
         console.log('this data is ', data);
         //do something with the data
         $("#clueDisplay").text(data.clue);
         $("#numberDisplay").text(data.number);
+        // this.checkCurrentPlayer(data.currentPlayer)
         this.updateDB(data);
     }
+
+    checkCurrentPlayer(playerNum){
+        if(playerNum===this.myPlayerNum){
+            $(".gameareainput").show();
+        } else {
+            $(".gameareainput").hide();
+        }
+    }
+
     updateDB(data){
         this.firebase.saveState(data);
+    }
+
+    giveNewClue( word, number){
+        this.data.clue = word;
+        this.data.number = number;
+        this.updateDB(this.data);
+    }
+
+    changeTurnCounter(turnValue){
+        this.data.turn = turnValue;
+        this.updateDB(this.data);
     }
 
     createCard() {

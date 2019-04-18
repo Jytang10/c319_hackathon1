@@ -9,22 +9,8 @@ var name;
 
 function initializeApp() {
     $('.coverbtn').click(closeLandingPage);
-    // $('.cover').hide();
-    // name = prompt("What's your name?");
-    // newGame = new Codenames(new Player(name));
-    // generateBoard = new Card();
-    // generateBoard.constructCard();
-     //add click handler to landing page 'start' button
-    // $('.submitbtn').click(newGame._player.getInputVal);
-    // newGame.addNewPlayer(player1);
-    // newGame.addNewPlayer(player2);
-
     function closeLandingPage() {
         name = $('.nameinput').val();
-        var wholeObject= {
-            players: {},
-            gameboard: {}
-        }
         newGame = new Codenames(new Player(name));
         generateBoard = new Card();
         generateBoard.constructCard();
@@ -33,69 +19,33 @@ function initializeApp() {
 
     $('.submitbtn').click(function(){
         console.log('saving');
-        debugger;
-        newGame.handleFirebaseUpdate({
-            clue:$('#clue > input[name=yourClue]').val(),
-            number:$('#number > input[name=yourNumber]').val()
-        });
+        newGame.giveNewClue($('#clue > input[name=yourClue]').val(),$('#number > input[name=yourNumber]').val());
+    
+
+        if(newGame.data.currentPlayer) {
+            newGame.data.currentPlayer = 0;
+            $('#clue').show();
+            $('#number').show();
+        } else {
+            newGame.data.currentPlayer = 1;
+            $('#clue').hide();
+            $('#number').hide();
+        }
     });
 }
 
-
-
-
-
-// getInputVal() {
-//     this.clue = $('.clueinput').val();
-//     this.number = $('.numberinput').val();
-//     console.log('this.clue', this.clue);
-//     console.log('this.number', this.number);
-// }
-
-
-
-
 class Player {
     constructor(name) {
-        // this.counts = 9; //left turns
-        // this.playerKeycard = [];
-        // // var newKeycards = new Keycards();
-        // // this.playerKeycard.push(newKeycards.getKeycards());
-        // this.clue;
-        // this.number;
         this.name = name;
     }
-    getInputVal() {
-        this.clue = $('.clueinput').val();
-        this.number = $('.numberinput').val();
-        console.log('this.clue', this.clue);
-        console.log('this.number', this.number);
-    }
+    // getInputVal() {
+    //     this.clue = $('.clueinput').val();
+    //     this.number = $('.numberinput').val();
+    //     console.log('this.clue', this.clue);
+    //     console.log('this.number', this.number);
+    // }
     getName(){
         return this.name;
     }
 
 }
-
-
-// class Keycards {
-//     constructor( ) { 
-//         this.keycard = [
-//             ["green", "yellow", "green", "yellow", "black"],
-//             ["black", "green", "green", "yellow", "yellow"],
-//             ["green", "green", "black", "yellow", "yellow"]
-//         ]
-//     }
-//     getKeycards() {
-//         this.randomNum = Math.floor(Math.random() * this.keycard.length);
-//         return this.keycard[this.randomNum];
-//     }
-// }
-
-// player1 = new Player(1);
-// player2 = new Player(2);
-// // player1 = new Player(1);
-// // player2 = new Player(2);
-// console.log('player1', player1);
-// console.log('player2', player2);
-
