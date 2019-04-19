@@ -30,10 +30,12 @@ class Card{
             'break',
             'battle'
         ]
+        this.wordArray2 =[];
     }
 
     constructCard() {
         var counter = 1;
+        var indexCounter = 0;
 
         for (var rowI = 0; rowI < 5; rowI++) {
             var newRow = $('<div>').addClass('cardset row'); 
@@ -48,9 +50,11 @@ class Card{
                 newCardBack.attr('xpos', cardI);
                 newCardBack.attr('ypos', rowI);
 
-                var randomWordIndex = Math.floor(Math.random() * this.wordArray.length);
-                var randomWord = this.wordArray[randomWordIndex];
-                this.wordArray.splice(randomWordIndex, 1);
+                // var randomWordIndex = Math.floor(Math.random() * this.wordArray.length);
+                // var randomWord = this.wordArray[randomWordIndex];
+                // this.wordArray.splice(randomWordIndex, 1);
+
+                var randomWord = this.wordArray[indexCounter++]
 
                 newCardP.text(randomWord);
                 newCardBack.attr('word', randomWord);
@@ -62,5 +66,13 @@ class Card{
             $('.gamearea .cards').append(newRow);
         }
         
+    }
+
+    copyArray() {
+        this.wordArray2 = this.wordArray.slice();
+    }
+
+    randomizer() {
+        this.wordArray
     }
 }
