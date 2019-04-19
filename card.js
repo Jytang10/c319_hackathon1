@@ -30,10 +30,12 @@ class Card{
             'break',
             'battle'
         ]
+        this.wordArray2 =[];
     }
 
     constructCard() {
         var counter = 1;
+        var indexCounter = 0;
 
         for (var rowI = 0; rowI < 5; rowI++) {
             var newRow = $('<div>').addClass('cardset row'); 
@@ -44,13 +46,18 @@ class Card{
                 var newCardBack = $('<div>').addClass('cardback');
                 var newCardP = $('<p>').addClass('word');
 
-                newCardBack.addClass('num' + counter++);
+                newCardBack.attr('num', counter++);
+                newCardBack.attr('xpos', cardI);
+                newCardBack.attr('ypos', rowI);
 
-                var randomWordIndex = Math.floor(Math.random() * this.wordArray.length);
-                var randomWord = this.wordArray[randomWordIndex];
-                this.wordArray.splice(randomWordIndex, 1);
+                // var randomWordIndex = Math.floor(Math.random() * this.wordArray.length);
+                // var randomWord = this.wordArray[randomWordIndex];
+                // this.wordArray.splice(randomWordIndex, 1);
+
+                var randomWord = this.wordArray[indexCounter++]
 
                 newCardP.text(randomWord);
+                newCardBack.attr('word', randomWord);
 
                 newCardFront.append(newCardP);
                 newCard.append(newCardFront, newCardBack);
@@ -60,4 +67,15 @@ class Card{
         }
         
     }
+<<<<<<< HEAD
+=======
+
+    copyArray() {
+        this.wordArray2 = this.wordArray.slice();
+    }
+
+    randomizer() {
+        this.wordArray
+    }
+>>>>>>> 3a66d5249b68e5880873ca134b70fe4c54901553
 }

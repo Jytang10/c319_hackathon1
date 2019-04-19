@@ -98,6 +98,7 @@ class Codenames{
             this.data = data;
             this.data.currentPlayer = 1;
             this.data.players.push(this.newPlayer)
+            $('.keycard').css({'background-color': 'white'});
             // var tempPlayer = this.data.players;
             // var playerNames = [];
             // debugger
