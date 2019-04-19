@@ -96,7 +96,9 @@ class Codenames{
        
         if (data && data.players) {
             this.data = data;
+            this.data.currentPlayer = 1;
             this.data.players.push(this.newPlayer)
+            $('.keycard').css({'background-color': 'white'});
             // var tempPlayer = this.data.players;
             // var playerNames = [];
             // debugger
@@ -107,7 +109,7 @@ class Codenames{
         } else {
             // this.data.players.push(newPlayer);
             this.data = {
-                currentPlayer: null,
+                currentPlayer: 0,
                 players : [this.newPlayer],
                 words: [],
                 gameBoard: [
@@ -126,14 +128,9 @@ class Codenames{
                     }
                 }
             }
-            for(var x = 0; x < 5; x++){
-                for ( var y = 0; y< 5; y++){
-                    var randomIndex = Math.floor(this.wordArray.length * Math.random());
-                    var randomWord = this.wordArray[ randomIndex];
-                    this.wordArray.splice(randomIndex,1);
-                    this.data.gameBoard[y][x].word = randomWord;
-                }
-            }
+
+            
+            
         }
             
         this.firebase.saveState(this.data);
@@ -209,8 +206,7 @@ class Codenames{
 
     
     cardClicked(event) {
-        // if (this.data.currentPlayer = 0) {
-        //     var clickedButton = $(this).attr('numpos');
+       
         var clickedCardNum = event.currentTarget.attributes[1].value;
         var clickedCardX = event.currentTarget.attributes[2].value;
         var clickedCardY = event.currentTarget.attributes[3].value;
