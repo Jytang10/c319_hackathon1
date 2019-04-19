@@ -38,6 +38,54 @@ class Codenames{
         ];
 
         this.data = null;
+        this.cardClicked = this.cardClicked.bind(this);
+        this.giveNewClue = this.giveNewClue.bind(this);
+        // this.data = {
+        //     currentPlayer: 0,
+        //     players: [],
+        //     words: [],
+        //     gameBoard1: 
+        //         [
+        //             [{position: '1',p1State:'assassin'},{position: '2',p1State:'assassin'},{position: '3',p1State:'assassin'},{position: '4',p1State:'innocent'},{position: '5',p1State:'innocent'}],
+        //             [{position: '6',p1State:'agent'},{position: '7',p1State:'agent'},{position: '8',p1State:'agent'},{position: '9',p1State:'innocent'},{position: '10',p1State:'innocent'}],
+        //             [{position: '11',p1State:'agent'},{position: '12',p1State:'agent'},{position: '13',p1State:'agent'},{position: '14',p1State:'innocent'},{position: '15',p1State:'innocent'}],
+        //             [{position: '16',p1State:'agent'},{position: '17',p1State:'agent'},{position: '18',p1State:'agent'},{position: '19',p1State:'innocent'},{position: '20',p1State:'innocent'}],
+        //             [{position: '21',p1State:'agent'},{position: '22',p1State:'agent'},{position: '23',p1State:'agent'},{position: '24',p1State:'innocent'},{position: '25',p1State:'innocent'}]
+        //         ], 
+        // //    gameBoard2: 
+        // //     [
+        // //     [{position: '1',p2State:'assassin'},{position: '2',p2State:'assassin'},{position: '3',p2State:'assassin'},{position: '4',p2State:'innocent'},{position: '5',p2State:'innocent'}],
+        // //     [{position: '6',p2State:'agent'},{position: '7',p2State:'agent'},{position: '8',p2State:'agent'},{position: '9',p2State:'innocent'},{position: '10',p2State:'innocent'}],
+        // //     [{position: '11',p2State:'agent'},{position: '12',p2State:'agent'},{position: '13',p2State:'agent'},{position: '14',p2State:'innocent'},{position: '15',p2State:'innocent'}],
+        // //     [{position: '16',p2State:'agent'},{position: '17',p2State:'agent'},{position: '18',p2State:'agent'},{position: '19',p2State:'innocent'},{position: '20',p2State:'innocent'}],
+        // //     [{position: '21',p2State:'agent'},{position: '22',p2State:'agent'},{position: '23',p2State:'agent'},{position: '24',p2State:'innocent'},{position: '25',p2State:'innocent'}]
+        // //      ],
+        //     playerStats: {
+        //         p1: {
+        //             agentsRemaining: 8
+        //         },
+        //         p2: {
+        //             agentsRemaining: 8
+        //         }
+        //     }
+        // }
+        // for(var x = 0; x < 5; x++){
+        //     for ( var y = 0; y< 5; y++){
+        //         var randomIndex = Math.floor(this.wordArray.length * Math.random());
+        //         var randomWord = this.wordArray[ randomIndex];
+        //         this.wordArray.splice(randomIndex,1);
+        //         this.data.gameBoard1[y][x].word = randomWord;
+        //     }
+        // }
+        // for(var x = 0; x < 5; x++){
+        //     for ( var y = 0; y< 5; y++){
+        //         var randomIndex = Math.floor(this.wordArray.length * Math.random());
+        //         var randomWord = this.wordArray[ randomIndex];
+        //         this.wordArray.splice(randomIndex,1);
+        //         this.data.gameBoard2[y][x].word = randomWord;
+        //     }
+        // }
+
     }
     firebaseLoaded(){
         // this.firebase.saveState(this.data)
@@ -48,6 +96,7 @@ class Codenames{
        
         if (data && data.players) {
             this.data = data;
+            this.data.currentPlayer = 1;
             this.data.players.push(this.newPlayer)
             // var tempPlayer = this.data.players;
             // var playerNames = [];
@@ -55,21 +104,19 @@ class Codenames{
             // this.playerNames.push(tempPlayer);
             // this.playerNames.push(this.newPlayer);
             // this.data.players = playerNames;
-            // console.log('player list',this.data.players);
+            console.log('player list',this.data.players);
         } else {
             // this.data.players.push(newPlayer);
             this.data = {
-                clue:null,
-                number:null,
-                currentPlayer: null,
+                currentPlayer: 0,
                 players : [this.newPlayer],
                 words: [],
                 gameBoard: [
-                    [{position: 'num1',p1State:'assassin'},{position: 'num2',p1State:'assassin'},{position: 'num3',p1State:'assassin'},{position: 'num4',p1State:'innocent'},{position: 'num5',p1State:'innocent'}],
-                    [{position: 'num6',p1State:'agent'},{position: 'num7',p1State:'agent'},{position: 'num8',p1State:'agent'},{position: 'num9',p1State:'innocent'},{position: 'num10',p1State:'innocent'}],
-                    [{position: 'num11',p1State:'agent'},{position: 'num12',p1State:'agent'},{position: 'num13',p1State:'agent'},{position: 'num14',p1State:'innocent'},{position: 'num15',p1State:'innocent'}],
-                    [{position: 'num16',p1State:'agent'},{position: 'num17',p1State:'agent'},{position: 'num18',p1State:'agent'},{position: 'num19',p1State:'innocent'},{position: 'num20',p1State:'innocent'}],
-                    [{position: 'num21',p1State:'agent'},{position: 'num22',p1State:'agent'},{position: 'num23',p1State:'agent'},{position: 'num24',p1State:'innocent'},{position: 'num25',p1State:'innocent'}]
+                    [{position: '1',p1State:'assassin',p2State: 'agent'},{position: '2',p1State:'assassin',p2State: 'agent'},{position: '3',p1State:'assassin',p2State: 'assassin'},{position: '4',p1State:'innocent',p2State: 'innocent'},{position: '5',p1State:'innocent',p2State: 'innocent'}],
+                    [{position: '6',p1State:'innocent',p2State: 'innocent'},{position: '7',p1State:'innocent',p2State: 'innocent'},{position: '8',p1State:'innocent',p2State: 'innocent'},{position: '9',p1State:'innocent',p2State: 'innocent'},{position: '10',p1State:'innocent',p2State: 'innocent'}],
+                    [{position: '11',p1State:'agent',p2State: 'innocent'},{position: '12',p1State:'agent',p2State: 'innocent'},{position: '13',p1State:'agent',p2State: 'innocent'},{position: '14',p1State:'innocent',p2State: 'innocent'},{position: '15',p1State:'innocent',p2State: 'innocent'}],
+                    [{position: '16',p1State:'agent',p2State: 'innocent'},{position: '17',p1State:'agent',p2State: 'innocent'},{position: '18',p1State:'agent',p2State: 'innocent'},{position: '19',p1State:'innocent',p2State: 'innocent'},{position: '20',p1State:'innocent',p2State: 'innocent'}],
+                    [{position: '21',p1State:'agent',p2State: 'innocent'},{position: '22',p1State:'agent',p2State: 'innocent'},{position: '23',p1State:'agent',p2State: 'innocent'},{position: '24',p1State:'innocent',p2State: 'innocent'},{position: '25',p1State:'innocent',p2State: 'innocent'}]
                 ], 
                 playerStats: {
                     p1: {
@@ -78,16 +125,11 @@ class Codenames{
                     p2: {
                         agentsRemaining: 8
                     }
-                },
-            }
-            for(var x = 0; x < 5; x++){
-                for ( var y = 0; y< 5; y++){
-                    var randomIndex = Math.floor(this.wordArray.length * Math.random());
-                    var randomWord = this.wordArray[ randomIndex];
-                    this.wordArray.splice(randomIndex,1);
-                    this.data.gameBoard[y][x].word = randomWord;
                 }
             }
+
+            
+            
         }
             
         this.firebase.saveState(this.data);
@@ -96,28 +138,92 @@ class Codenames{
         //otherwise, just update your local data with the firebase data and rewrite board
 
     }
+
+    getData() {
+        return this.data;
+    }
     
-    handleFirebaseUpdate( data ){
-    
+    handleFirebaseUpdate( data ){     //checks firebase data and makes changes
         console.log('this data is ', data);
         //do something with the data
-<<<<<<< HEAD
         $("#clueDisplay").text(data.clue);
         $("#numberDisplay").text(data.number);
+        // this.checkCurrentPlayer(data.currentPlayer)
         this.updateDB(data);
-=======
-        // debugger;
-        $("#clueDisplay").text(data.clue);
-        $("#numberDisplay").text(data.number);
-        this.updateDB(data);
-        // console.log('this data is: ', data);
->>>>>>> origin/fireBaseClue
+
     }
+
+    checkCurrentPlayer(playerNum){
+        if(playerNum===this.myPlayerNum){
+            $(".gameareainput").show();
+        } else {
+            $(".gameareainput").hide();
+        }
+    }
+
     updateDB(data){
         this.firebase.saveState(data);
     }
 
+    giveNewClue( word, number){
+        this.data.clue = word;
+        this.data.number = number;
+        this.updateDB(this.data);
+    }
+
     createCard() {
         this._card = new Cards()
+    }
+
+    giveNewClue( word, number){
+        this.data.clue = word;
+        this.data.number = number;
+        this.updateDB(this.data);
+    }
+
+
+
+// class Cards{
+//     constructor( initialWord, p1State, p2State){
+//         this.data = {
+//             word: initialWord,
+//             p1State: p1State,
+//             p2State: p2State
+//         }
+//     }
+//     updateData( newData ){
+//         this.data.word = newData.word;
+//         this.data.p1State = newData.p1State;
+//         this.data.p2State = newData.p2State;
+//         this.card.text( this.data.word);
+//     }
+
+//     render(){
+//         this.card = $("<div>").text(this.data.word);
+//     }
+// }
+
+    
+    cardClicked(event) {
+       
+        var clickedCardNum = event.currentTarget.attributes[1].value;
+        var clickedCardX = event.currentTarget.attributes[2].value;
+        var clickedCardY = event.currentTarget.attributes[3].value;
+        var clickedCardClass = $(`[num~=${clickedCardNum}]`);
+        var fetchData = this.data;
+        var gBoard = fetchData.gameBoard;
+        console.log('clicked num', clickedCardClass);
+        console.log('gboard is ',gBoard);
+        console.log(event)
+        console.log('gboard coord is', gBoard[clickedCardY][clickedCardX].p1State)
+        if (gBoard[clickedCardY][clickedCardX].p1State === 'innocent') {
+            clickedCardClass.css({'background-color': 'yellow'});
+        } else if (gBoard[clickedCardY][clickedCardX].p1State === 'assassin') {
+            clickedCardClass.css({'background-color': 'black'});
+        } else if (gBoard[clickedCardY][clickedCardX].p1State === 'agent') {
+            clickedCardClass.css({'background-color': 'green'});
+        }
+        
+        
     }
 }

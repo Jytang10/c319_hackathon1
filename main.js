@@ -34,13 +34,33 @@ function initializeApp() {
     $('.submitbtn').click(function(){
         console.log('saving');
         debugger;
-        newGame.handleFirebaseUpdate({
-            clue:$('#clue > input[name=yourClue]').val(),
-            number:$('#number > input[name=yourNumber]').val()
-        });
+        newGame.giveNewClue($('#clue > input[name=yourClue]').val(),$('#number > input[name=yourNumber]').val());
+        //
+        if(newGame.data.currentPlayer) {
+            newGame.data.currentPlayer = 0;
+            // $('#clue').show();
+            // $('#number').show();
+            $('.playerturn1').text("Your Turn!");
+            $('.playerturn2').text("");
+        } else {
+            newGame.data.currentPlayer = 1;
+            // $('#clue').hide();
+            // $('#number').hide();
+            $('.playerturn1').text("");
+            $('.playerturn2').text("Your Turn!");
+        }
+        //
+
+        console.log('newGame.data.currentPlayer', newGame.data.currentPlayer);
     });
+
 }
 
+
+
+// function clickedCard() {
+//     $()
+// }
 
 
 
