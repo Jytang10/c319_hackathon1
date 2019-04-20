@@ -3,39 +3,10 @@ class Card{
         this._word;
         this.front;
         this.back;
-        this.wordArray = [
-            'pug',
-            'brachycephalic',
-            'grumble',
-            'fawn',
-            'potato',
-            'rat',
-            'cake',
-            'puggle',
-            'pugrrito',
-            'pugasaurus',
-            'biscuit',
-            'desk',
-            'saddle',
-            'bucket',
-            'beam',
-            'coach',
-            'frost',
-            'curry',
-            'parade',
-            'london',
-            'rock',
-            'floor', 
-            'snake',
-            'break',
-            'battle'
-        ]
-        this.wordArray2 =[];
     }
 
-    constructCard() {
+    constructCard( wordArray ) {
         var counter = 1;
-        var indexCounter = 0;
 
         for (var rowI = 0; rowI < 5; rowI++) {
             var newRow = $('<div>').addClass('cardset row'); 
@@ -50,11 +21,8 @@ class Card{
                 newCardBack.attr('xpos', cardI);
                 newCardBack.attr('ypos', rowI);
 
-                // var randomWordIndex = Math.floor(Math.random() * this.wordArray.length);
-                // var randomWord = this.wordArray[randomWordIndex];
-                // this.wordArray.splice(randomWordIndex, 1);
-
-                var randomWord = this.wordArray[indexCounter++]
+                var randomWord = wordArray[0];
+                wordArray.splice(0, 1);
 
                 newCardP.text(randomWord);
                 newCardBack.attr('word', randomWord);
@@ -68,11 +36,18 @@ class Card{
         
     }
 
-    copyArray() {
-        this.wordArray2 = this.wordArray.slice();
+    copyArray(wordArray) {
+        wordArray = wordArray.concat(wordArray);
+        var wordArray2 = wordArray.splice(25,25);
+        return wordArray2;
     }
 
-    randomizer() {
-        this.wordArray
+    randomizer(wordArray) {
+        for (var i = wordArray.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = wordArray[i];
+            wordArray[i] = wordArray[j];
+            wordArray[j] = temp;
+        } 
     }
 }
