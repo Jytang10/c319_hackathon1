@@ -67,8 +67,6 @@ class Card{
         }
         
     }
-<<<<<<< HEAD
-=======
 
     copyArray() {
         this.wordArray2 = this.wordArray.slice();
@@ -77,5 +75,4 @@ class Card{
     randomizer() {
         this.wordArray
     }
->>>>>>> 3a66d5249b68e5880873ca134b70fe4c54901553
 }

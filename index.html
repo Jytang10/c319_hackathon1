@@ -24,12 +24,15 @@
         <div class="info row">
             <div class="fakediv col-4"></div>
             <div class="allinput col-4">
-                <p class="nametext"> What's your name?</p>
+                <!-- <p class="nametext"> What's your name?</p>
                 <label class = "covertext" id="name">
                 <input type = "text" class="nameinput" id="name">
-                </label>
-                <div class="covertext startbtn start row"><button class = "coverbtn start">start</button></div>
+                </label> -->
+                <div class="covertext player1btn start row"><button class = "coverbtn player1">Player1</button></div>
+                <div class="covertext player2btn start row"><button class = "coverbtn player2">Player2</button></div>
+                <form action="https://czechgames.com/files/rules/codenames-duet-rules-en.pdf">
                 <div class="covertext howtobtn howtoplay row"><button class ="coverbtn howtoplay">How to play</button></div>
+                </form>    
             </div>
             <div class="fakediv col-4"></div>
         </div>
@@ -42,13 +45,14 @@
             <div class = "logo col-2"></div>
             <div class = "player player1 col-3">
                 <div class= "playertitle">Player 1</div>
-                <div class="playericon col"><p class="playerturn1">Player 1 Turn Highlight Here</p></div>
+                <div class="playericon playericon1 col"><p class="playerturn1"></p></div>
             </div>
             <div class = "keycardset col-4">
                 <div class = "keycardtitle row">
                     <p>Keycards</p>
                 </div>    
-                <div class="keycardsbg">
+                <div class="keycardsbg keycardset1">
+                        <!-- play1 will see, player2'sanswer =p2state -->
                     <div class="keycards row">
                         <div class="keycard keycard1 col"></div>
                         <div class="keycard keycard2 col"></div>
@@ -85,10 +89,48 @@
                         <div class="keycard keycard25 col"></div>
                     </div>
                 </div>
+                <div class="keycardsbg keycardset2 ">
+                     <!-- play1 will see, player2'sanswer =p2state -->
+                    <div class="keycards row">
+                        <div class="keycard keycard2-1 col"></div>
+                        <div class="keycard keycard2-2 col"></div>
+                        <div class="keycard keycard2-3 col"></div>
+                        <div class="keycard keycard2-4 col"></div>
+                        <div class="keycard keycard2-5 col"></div>
+                    </div>
+                    <div class="keycards row">
+                        <div class="keycard keycard2-6 col"></div>
+                        <div class="keycard keycard2-7 col"></div>
+                        <div class="keycard keycard2-8 col"></div>
+                        <div class="keycard keycard2-9 col"></div>
+                        <div class="keycard keycard2-10 col"></div>
+                    </div>
+                    <div class="keycards row">
+                        <div class="keycard keycard2-11 col"></div>
+                        <div class="keycard keycard2-12 col"></div>
+                        <div class="keycard keycard2-13 col"></div>
+                        <div class="keycard keycard2-14 col"></div>
+                        <div class="keycard keycard2-15 col"></div>
+                    </div>
+                    <div class="keycards row">
+                        <div class="keycard keycard2-16 col"></div>
+                        <div class="keycard keycard2-17 col"></div>
+                        <div class="keycard keycard2-18 col"></div>
+                        <div class="keycard keycard2-19 col"></div>
+                        <div class="keycard keycard2-20 col"></div>
+                    </div>
+                    <div class="keycards row">
+                        <div class="keycard keycard2-21 col"></div>
+                        <div class="keycard keycard2-22 col"></div>
+                        <div class="keycard keycard2-23 col"></div>
+                        <div class="keycard keycard2-24 col"></div>
+                        <div class="keycard keycard2-25 col"></div>
+                    </div>
+                </div>
             </div>
             <div class = "player player2 col-3">
                 <div class= "playertitle">Player 2</div>
-                <div class="playericon"><p class="playerturn2">Player 2 Turn Highlight Here</p></div>
+                <div class="playericon playericon2"><p class="playerturn2"></p></div>
             </div>
         </div>
     </header>
@@ -113,7 +155,7 @@
             <!--input area-->
         </div>
         <div class = "gameareainput row">
-            <div class="col-2 col-offset-2"> <p> You are player <p class = "playerturninput"></p></p></div>
+            <div class="col-2 col-offset-2"><p class = "playerturninput"></p></div>
             <div class = "input col-8">
                 <label id="clue">Clue : <input type = "text" class="clueinput" id="clue" name='yourClue'></label>
                 <label id="number">Number : <input type = "number" class="numberinput" id="number" name='yourNumber'></label>

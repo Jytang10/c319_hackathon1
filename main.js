@@ -10,6 +10,8 @@ var name;
 
 function initializeApp() {
     $('.coverbtn').click(closeLandingPage);
+    $('.player1').click(getKeyCards);
+    $('.player2').click(getKeyCards);
     // $('.cover').hide();
     // name = prompt("What's your name?");
     // newGame = new Codenames(new Player(name));
@@ -19,46 +21,39 @@ function initializeApp() {
     // $('.submitbtn').click(newGame._player.getInputVal);
     // newGame.addNewPlayer(player1);
     // newGame.addNewPlayer(player2);
-
     function closeLandingPage() {
         
         name = $('.nameinput').val();
-        var wholeObject= {
-            players: {},
-            gameboard: {}
-        }
         newGame = new Codenames(new Player(name));
         generateBoard = new Card();
         generateBoard.constructCard();
         clickHandler();
         $('.cover').hide();
     }
-<<<<<<< HEAD
-=======
     $('.submitbtn').click(function(){
         console.log('saving');
         newGame.giveNewClue($('#clue > input[name=yourClue]').val(),$('#number > input[name=yourNumber]').val());
-    
-        if(newGame.data.currentPlayer) {
-            newGame.data.currentPlayer = 0;
-            // $('#clue').show();
-            // $('#number').show();
-        } else {
-            newGame.data.currentPlayer = 1;
-            // $('#clue').hide();
-            // $('#number').hide();
-        }
     });
-    
-    
-    
+}
 
+
+function getKeyCards() {
+    if (this.className === "coverbtn player1") {
+        $('.keycardset2').css('display', 'none');
+        $('.playericon2').css('background-image', 'url("images/agent2.png")');
+        $('.playerturn1').text('Your turn!');
+    } else {
+        $('.keycardset1').css('display', 'none');
+        $('.playericon1').css('background-image', 'url("images/agent2.png")');
+        $('.playerturn2').text('Your turn!');
+    }
 }
 
 function clickHandler() {
     $('.cards').on('click', '.cardback', newGame.cardClicked);
 }
-    function sendClueMessage(){
+
+function sendClueMessage(){
         $('.submitbtn').click(function(){
             console.log('saving');
             newGame.updateDB({
@@ -67,38 +62,8 @@ function clickHandler() {
             });
         });
     }
->>>>>>> 3a66d5249b68e5880873ca134b70fe4c54901553
-
-    $('.submitbtn').click(function(){
-        console.log('saving');
-        debugger;
-        newGame.giveNewClue($('#clue > input[name=yourClue]').val(),$('#number > input[name=yourNumber]').val());
-        //
-        if(newGame.data.currentPlayer) {
-            newGame.data.currentPlayer = 0;
-            // $('#clue').show();
-            // $('#number').show();
-            $('.playerturn1').text("Your Turn!");
-            $('.playerturn2').text("");
-        } else {
-            newGame.data.currentPlayer = 1;
-            // $('#clue').hide();
-            // $('#number').hide();
-            $('.playerturn1').text("");
-            $('.playerturn2').text("Your Turn!");
-        }
-        //
-
-        console.log('newGame.data.currentPlayer', newGame.data.currentPlayer);
-    });
 
 
-
-
-
-// function clickedCard() {
-//     $()
-// }
 
 
 
@@ -122,6 +87,7 @@ class Player {
         // this.clue;
         // this.number;
         this.name = name;
+        this.clickHandler = this.clickHandler.bind(this);
     }
     getInputVal() {
         this.clue = $('.clueinput').val();
@@ -132,6 +98,11 @@ class Player {
     getName(){
         return this.name;
     }
+    clickHandler() {
+        $('.player1').click(getKeyCards(1));
+        $('.player2').click(getKeyCards(2));
+    }
+   
 
 }
 
@@ -156,4 +127,3 @@ class Player {
 // // player2 = new Player(2);
 // console.log('player1', player1);
 // console.log('player2', player2);
-
