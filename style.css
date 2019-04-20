@@ -46,12 +46,15 @@
     .info {
         height: 60%;
     }
-    .startbtn, .howtobtn {
+    .player1btn, .player2btn, .howtobtn {
         text-align: center;
         margin-bottom: 3%;
         top: 10%;
         position: relative;
         justify-content: center;
+    }
+    .player2btn {
+        margin-bottom: 12%;
     }
     .covertext {
         height: 15%;
@@ -91,7 +94,7 @@
         justify-content: center;
         font-size: 1.5rem;
     }
-    .keycardsbg {
+    .keycardsbg, .keycardset1, .keycardset2 {
         height: 85%;
         width: 100%;
         background-image: url("images/cardkey3.png");
@@ -114,11 +117,23 @@
         margin: 1px;
         border-radius: 5px;
     }
-    .keycard1, .keycard2, .keycard3 {
+    /* .keycardset2 {
+        display: none;
+    } */
+    /* player2 keycard FOR player1*/
+    .keycard5, .keycard7, .keycard23 { 
         background-color: black;
         border: 1px solid white;
     }
-    .keycard11, .keycard12, .keycard13, .keycard16, .keycard17, .keycard18, .keycard23, .keycard21, .keycard22  {
+    .keycard2, .keycard4, .keycard6, .keycard8, .keycard10, .keycard17, .keycard19, .keycard20, .keycard25  {
+        background-color: green;
+    }
+    /* player1 keycard FOR player2 */
+    .keycard2-5, .keycard2-6, .keycard2-19 {
+        background-color: black;
+        border: 1px solid white;
+    }
+    .keycard2-3, .keycard2-4, .keycard2-7, .keycard2-9, .keycard2-11, .keycard2-12, .keycard2-13, .keycard2-15, .keycard2-20  {
         background-color: green;
     }
     .playertitle{
@@ -129,13 +144,19 @@
         margin-top: 2%;
         font-size: 1.5rem;
     }
-    .playericon {
+    .playericon1, .playericon2 {
         width: 50%;
         height: 50%;
         background-color:rgb(239, 243, 16);
         border-radius: 10px;
         margin-left: 25%;
         margin-top: 5%;
+        /* background-image: url("images/agent2.png"); */
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+    .playerturn2, .playerturn1 {
+        font-size : 2rem;
     }
     .sidebar {
         position: relative;

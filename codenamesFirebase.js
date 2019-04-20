@@ -33,7 +33,7 @@ class CodenamesFBObject{
         this.db.database().ref(this.boardName).on('value',this.handleDataUpdate.bind(this));
         this.onLoadCallback();
     }
-    handleDataUpdate(data){
+    handleDataUpdate(data){ //변화가 있을때마다 자동으로 변화를 데이터베이스에 업뎃함.
         var currentData = JSON.stringify(data.val());
         if(currentData!=this.lastSend){
             this.callback.call(null,data.val());
