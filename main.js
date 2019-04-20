@@ -10,43 +10,17 @@ var name;
 
 function initializeApp() {
     $('.coverbtn').click(closeLandingPage);
-    // $('.cover').hide();
-    // name = prompt("What's your name?");
-    // newGame = new Codenames(new Player(name));
-    // generateBoard = new Card();
-    // generateBoard.constructCard();
-     //add click handler to landing page 'start' button
-    // $('.submitbtn').click(newGame._player.getInputVal);
-    // newGame.addNewPlayer(player1);
-    // newGame.addNewPlayer(player2);
     function closeLandingPage() {
-        
         name = $('.nameinput').val();
         newGame = new Codenames(new Player(name));
-        generateBoard = new Card();
-        generateBoard.constructCard();
         clickHandler();
         $('.cover').hide();
     }
     $('.submitbtn').click(function(){
         console.log('saving');
         newGame.giveNewClue($('#clue > input[name=yourClue]').val(),$('#number > input[name=yourNumber]').val());
-    
-        if(newGame.data.currentPlayer) {
-            newGame.data.currentPlayer = 0;
-            // $('#clue').show();
-            // $('#number').show();
-        } else {
-            newGame.data.currentPlayer = 1;
-            // $('#clue').hide();
-            // $('#number').hide();
-        }
     });
-    
-    
-    
-
-}
+} 
 
 function clickHandler() {
     $('.cards').on('click', '.cardback', newGame.cardClicked);

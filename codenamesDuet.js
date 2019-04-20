@@ -36,7 +36,7 @@ class Codenames{
             'break',
             'battle'
         ];
-
+        this.wordArray2;
         this.data = null;
         this.cardClicked = this.cardClicked.bind(this);
         this.giveNewClue = this.giveNewClue.bind(this);
@@ -92,51 +92,56 @@ class Codenames{
         this.firebase.getAllData( this.handleInitialGameState );
     }
     handleInitialGameState( data ){
-         //initial game state
-       
-        if (data && data.players) {
-            this.data = data;
-            this.data.currentPlayer = 1;
-            this.data.players.push(this.newPlayer)
-            // var tempPlayer = this.data.players;
-            // var playerNames = [];
-            // debugger
-            // this.playerNames.push(tempPlayer);
-            // this.playerNames.push(this.newPlayer);
-            // this.data.players = playerNames;
-            console.log('player list',this.data.players);
-        } else {
-            // this.data.players.push(newPlayer);
-            this.data = {
-                currentPlayer: 0,
-                players : [this.newPlayer],
-                words: [],
-                gameBoard: [
-                    [{position: '1',p1State:'assassin',p2State: 'agent'},{position: '2',p1State:'assassin',p2State: 'agent'},{position: '3',p1State:'assassin',p2State: 'assassin'},{position: '4',p1State:'innocent',p2State: 'innocent'},{position: '5',p1State:'innocent',p2State: 'innocent'}],
-                    [{position: '6',p1State:'innocent',p2State: 'innocent'},{position: '7',p1State:'innocent',p2State: 'innocent'},{position: '8',p1State:'innocent',p2State: 'innocent'},{position: '9',p1State:'innocent',p2State: 'innocent'},{position: '10',p1State:'innocent',p2State: 'innocent'}],
-                    [{position: '11',p1State:'agent',p2State: 'innocent'},{position: '12',p1State:'agent',p2State: 'innocent'},{position: '13',p1State:'agent',p2State: 'innocent'},{position: '14',p1State:'innocent',p2State: 'innocent'},{position: '15',p1State:'innocent',p2State: 'innocent'}],
-                    [{position: '16',p1State:'agent',p2State: 'innocent'},{position: '17',p1State:'agent',p2State: 'innocent'},{position: '18',p1State:'agent',p2State: 'innocent'},{position: '19',p1State:'innocent',p2State: 'innocent'},{position: '20',p1State:'innocent',p2State: 'innocent'}],
-                    [{position: '21',p1State:'agent',p2State: 'innocent'},{position: '22',p1State:'agent',p2State: 'innocent'},{position: '23',p1State:'agent',p2State: 'innocent'},{position: '24',p1State:'innocent',p2State: 'innocent'},{position: '25',p1State:'innocent',p2State: 'innocent'}]
-                ], 
-                playerStats: {
-                    p1: {
-                        agentsRemaining: 8
-                    },
-                    p2: {
-                        agentsRemaining: 8
-                    }
-                }
-            }
+        //initial game state
+        var newGameCard = new Card();
 
-            
-            
+       if (data && data.players) {
+           this.data = data;
+           this.data.currentPlayer = 1;
+           this.data.players.push(this.newPlayer)
+           // var tempPlayer = this.data.players;
+           // var playerNames = [];
+           // debugger
+           // this.playerNames.push(tempPlayer);
+           // this.playerNames.push(this.newPlayer);
+           // this.data.players = playerNames;
+           console.log('player list',this.data.players);
+       } else {
+           // this.data.players.push(newPlayer);
+           this.firebase.saveState(null);  
+           newGameCard.randomizer(this.wordArray);
+           this.wordArray2 = newGameCard.copyArray(this.wordArray);
+           console.log('wordArray 1 is ', this.wordArray);
+           console.log('wordArray 2 is ', this.wordArray2);
+           newGameCard.constructCard(this.wordArray);
+
+           this.data = {
+               currentPlayer: 0,
+               players : [this.newPlayer],
+               words: [],
+               clue: null,
+               number: null,
+               gameBoard: [
+                   [{position: '1',p1State:'assassin',p2State: 'agent'},{position: '2',p1State:'assassin',p2State: 'agent'},{position: '3',p1State:'assassin',p2State: 'assassin'},{position: '4',p1State:'innocent',p2State: 'innocent'},{position: '5',p1State:'innocent',p2State: 'innocent'}],
+                   [{position: '6',p1State:'innocent',p2State: 'innocent'},{position: '7',p1State:'innocent',p2State: 'innocent'},{position: '8',p1State:'innocent',p2State: 'innocent'},{position: '9',p1State:'innocent',p2State: 'innocent'},{position: '10',p1State:'innocent',p2State: 'innocent'}],
+                   [{position: '11',p1State:'agent',p2State: 'innocent'},{position: '12',p1State:'agent',p2State: 'innocent'},{position: '13',p1State:'agent',p2State: 'innocent'},{position: '14',p1State:'innocent',p2State: 'innocent'},{position: '15',p1State:'innocent',p2State: 'innocent'}],
+                   [{position: '16',p1State:'agent',p2State: 'innocent'},{position: '17',p1State:'agent',p2State: 'innocent'},{position: '18',p1State:'agent',p2State: 'innocent'},{position: '19',p1State:'innocent',p2State: 'innocent'},{position: '20',p1State:'innocent',p2State: 'innocent'}],
+                   [{position: '21',p1State:'agent',p2State: 'innocent'},{position: '22',p1State:'agent',p2State: 'innocent'},{position: '23',p1State:'agent',p2State: 'innocent'},{position: '24',p1State:'innocent',p2State: 'innocent'},{position: '25',p1State:'innocent',p2State: 'innocent'}]
+               ], 
+               playerStats: {
+                   p1: {
+                       agentsRemaining: 8
+                   },
+                   p2: {
+                       agentsRemaining: 8
+                   }
+               }
+           }
         }
-            
         this.firebase.saveState(this.data);
         //if there is no current player / data, select 25 words and put them into firebase
             //then update firebase with new obj
         //otherwise, just update your local data with the firebase data and rewrite board
-
     }
 
     getData() {
@@ -181,8 +186,6 @@ class Codenames{
         this.updateDB(this.data);
     }
 
-
-
 // class Cards{
 //     constructor( initialWord, p1State, p2State){
 //         this.data = {
@@ -202,7 +205,6 @@ class Codenames{
 //         this.card = $("<div>").text(this.data.word);
 //     }
 // }
-
     
     cardClicked(event) {
        
@@ -223,7 +225,5 @@ class Codenames{
         } else if (gBoard[clickedCardY][clickedCardX].p1State === 'agent') {
             clickedCardClass.css({'background-color': 'green'});
         }
-        
-        
     }
 }
