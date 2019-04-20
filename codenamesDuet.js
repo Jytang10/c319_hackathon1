@@ -36,6 +36,7 @@ class Codenames{
             'break',
             'battle'
         ];
+        this.wordArray2;
 
         this.data = null;
         this.cardClicked = this.cardClicked.bind(this);
@@ -93,12 +94,12 @@ class Codenames{
     }
     handleInitialGameState( data ){
          //initial game state
-       
+         var newGameCard = new Card();
+
         if (data && data.players) {
             this.data = data;
             this.data.currentPlayer = 1;
             this.data.players.push(this.newPlayer)
-            $('.keycard').css({'background-color': 'white'});
             // var tempPlayer = this.data.players;
             // var playerNames = [];
             // debugger
@@ -108,6 +109,13 @@ class Codenames{
             console.log('player list',this.data.players);
         } else {
             // this.data.players.push(newPlayer);
+            debugger;   
+            newGameCard.randomizer(this.wordArray);
+            this.wordArray2 = newGameCard.copyArray(this.wordArray);
+            console.log('wordArray 1 is ', this.wordArray);
+            console.log('wordArray 2 is ', this.wordArray2);
+            newGameCard.constructCard(this.wordArray);
+
             this.data = {
                 currentPlayer: 0,
                 players : [this.newPlayer],
@@ -213,10 +221,7 @@ class Codenames{
         var clickedCardClass = $(`[num~=${clickedCardNum}]`);
         var fetchData = this.data;
         var gBoard = fetchData.gameBoard;
-        console.log('clicked num', clickedCardClass);
-        console.log('gboard is ',gBoard);
-        console.log(event)
-        console.log('gboard coord is', gBoard[clickedCardY][clickedCardX].p1State)
+        
         if (gBoard[clickedCardY][clickedCardX].p1State === 'innocent') {
             clickedCardClass.css({'background-color': 'yellow'});
         } else if (gBoard[clickedCardY][clickedCardX].p1State === 'assassin') {
