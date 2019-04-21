@@ -1,4 +1,3 @@
-
 $(document).ready(initializeApp);
 
 var newGame;
@@ -6,7 +5,7 @@ var newGameCodenames
 var generateBoard;
 var player1;
 var player2;
-var name;
+var getName;
 
 function initializeApp() {
     $('.coverbtn').click(closeLandingPage);
@@ -21,9 +20,13 @@ function initializeApp() {
     // $('.submitbtn').click(newGame._player.getInputVal);
     // newGame.addNewPlayer(player1);
     // newGame.addNewPlayer(player2);
+
+
+
     function closeLandingPage() {
-        name = $('.nameinput').val();
-        newGame = new Codenames(new Player(name));
+        getName = this.className.split(" ");
+        name = getName[1];
+        newGame = new Codenames(name);
         clickHandler();
         $('.cover').hide();
     }
@@ -38,11 +41,11 @@ function getKeyCards() {
     if (this.className === "coverbtn player1") {
         $('.keycardset2').css('display', 'none');
         $('.playericon2').css('background-image', 'url("images/agent2.png")');
-        $('.playerturn1').text('Your turn!');
+        // $('.playerturn1').text('Your turn!');
     } else {
         $('.keycardset1').css('display', 'none');
         $('.playericon1').css('background-image', 'url("images/agent2.png")');
-        $('.playerturn2').text('Your turn!');
+        // $('.playerturn2').text('Your turn!');
     }
 }
 
@@ -75,33 +78,26 @@ function sendClueMessage(){
 
 
 
-class Player {
-    constructor(name) {
-        // this.counts = 9; //left turns
-        // this.playerKeycard = [];
-        // // var newKeycards = new Keycards();
-        // // this.playerKeycard.push(newKeycards.getKeycards());
-        // this.clue;
-        // this.number;
-        this.name = name;
-        this.clickHandler = this.clickHandler.bind(this);
-    }
-    getInputVal() {
-        this.clue = $('.clueinput').val();
-        this.number = $('.numberinput').val();
-        console.log('this.clue', this.clue);
-        console.log('this.number', this.number);
-    }
-    getName(){
-        return this.name;
-    }
-    clickHandler() {
-        $('.player1').click(getKeyCards(1));
-        $('.player2').click(getKeyCards(2));
-    }
-   
-
-}
+// class Player {
+//     constructor(name) {
+//         // this.counts = 9; //left turns
+//         // this.playerKeycard = [];
+//         // // var newKeycards = new Keycards();
+//         // // this.playerKeycard.push(newKeycards.getKeycards());
+//         // this.clue;
+//         // this.number;
+//         this.name = name;
+//     }
+//     getInputVal() {
+//         this.clue = $('.clueinput').val();
+//         this.number = $('.numberinput').val();
+//         console.log('this.clue', this.clue);
+//         console.log('this.number', this.number);
+//     }
+//     getName(){
+//         return this.name;
+//     }
+// }
 
 
 // class Keycards {

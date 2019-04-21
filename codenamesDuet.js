@@ -11,15 +11,15 @@ class Codenames{
         this.firebase = new CodenamesFBObject('CodenamesDuet', this.handleFirebaseUpdate, this.firebaseLoaded);
         this.wordArray = [
             'pug',
-            'brachycephalic',
+            'vet',
             'grumble',
             'fawn',
             'potato',
             'rat',
             'cake',
-            'puggle',
-            'pugrrito',
-            'pugasaurus',
+            'scroll', //change
+            'sled',//change
+            'bench',//change
             'biscuit',
             'desk',
             'saddle',
@@ -35,56 +35,12 @@ class Codenames{
             'snake',
             'break',
             'battle'
-        ];
-        this.wordArray2;
+        ]
+
         this.data = null;
         this.cardClicked = this.cardClicked.bind(this);
         this.giveNewClue = this.giveNewClue.bind(this);
-        // this.data = {
-        //     currentPlayer: 0,
-        //     players: [],
-        //     words: [],
-        //     gameBoard1: 
-        //         [
-        //             [{position: '1',p1State:'assassin'},{position: '2',p1State:'assassin'},{position: '3',p1State:'assassin'},{position: '4',p1State:'innocent'},{position: '5',p1State:'innocent'}],
-        //             [{position: '6',p1State:'agent'},{position: '7',p1State:'agent'},{position: '8',p1State:'agent'},{position: '9',p1State:'innocent'},{position: '10',p1State:'innocent'}],
-        //             [{position: '11',p1State:'agent'},{position: '12',p1State:'agent'},{position: '13',p1State:'agent'},{position: '14',p1State:'innocent'},{position: '15',p1State:'innocent'}],
-        //             [{position: '16',p1State:'agent'},{position: '17',p1State:'agent'},{position: '18',p1State:'agent'},{position: '19',p1State:'innocent'},{position: '20',p1State:'innocent'}],
-        //             [{position: '21',p1State:'agent'},{position: '22',p1State:'agent'},{position: '23',p1State:'agent'},{position: '24',p1State:'innocent'},{position: '25',p1State:'innocent'}]
-        //         ], 
-        // //    gameBoard2: 
-        // //     [
-        // //     [{position: '1',p2State:'assassin'},{position: '2',p2State:'assassin'},{position: '3',p2State:'assassin'},{position: '4',p2State:'innocent'},{position: '5',p2State:'innocent'}],
-        // //     [{position: '6',p2State:'agent'},{position: '7',p2State:'agent'},{position: '8',p2State:'agent'},{position: '9',p2State:'innocent'},{position: '10',p2State:'innocent'}],
-        // //     [{position: '11',p2State:'agent'},{position: '12',p2State:'agent'},{position: '13',p2State:'agent'},{position: '14',p2State:'innocent'},{position: '15',p2State:'innocent'}],
-        // //     [{position: '16',p2State:'agent'},{position: '17',p2State:'agent'},{position: '18',p2State:'agent'},{position: '19',p2State:'innocent'},{position: '20',p2State:'innocent'}],
-        // //     [{position: '21',p2State:'agent'},{position: '22',p2State:'agent'},{position: '23',p2State:'agent'},{position: '24',p2State:'innocent'},{position: '25',p2State:'innocent'}]
-        // //      ],
-        //     playerStats: {
-        //         p1: {
-        //             agentsRemaining: 8
-        //         },
-        //         p2: {
-        //             agentsRemaining: 8
-        //         }
-        //     }
-        // }
-        // for(var x = 0; x < 5; x++){
-        //     for ( var y = 0; y< 5; y++){
-        //         var randomIndex = Math.floor(this.wordArray.length * Math.random());
-        //         var randomWord = this.wordArray[ randomIndex];
-        //         this.wordArray.splice(randomIndex,1);
-        //         this.data.gameBoard1[y][x].word = randomWord;
-        //     }
-        // }
-        // for(var x = 0; x < 5; x++){
-        //     for ( var y = 0; y< 5; y++){
-        //         var randomIndex = Math.floor(this.wordArray.length * Math.random());
-        //         var randomWord = this.wordArray[ randomIndex];
-        //         this.wordArray.splice(randomIndex,1);
-        //         this.data.gameBoard2[y][x].word = randomWord;
-        //     }
-        // }
+
 
     }
     firebaseLoaded(){
@@ -93,12 +49,13 @@ class Codenames{
     }
     handleInitialGameState( data ){
          //initial game state
-       
+         var newGameCard = new Card();
+
         if (data && data.players) {
+            debugger
             this.data = data;
-            this.data.currentPlayer = 1;
-            this.data.players.push(this.newPlayer)
-            // $('.keycard').css({'background-color': 'white'});
+            this.data.players.push(this.newPlayer);
+            newGameCard.constructCard(this.data.words);
             // var tempPlayer = this.data.players;
             // var playerNames = [];
             // debugger
@@ -108,41 +65,41 @@ class Codenames{
             console.log('player list',this.data.players);
         } else {
             // this.data.players.push(newPlayer);
-            console.log('true means can be clicked');
+            debugger;   
             this.data = {
                 players : [this.newPlayer],
-                words: [],
+                words: null,
                 gameBoard: [
-                    [{position: '1',p1State:'innocent',p2State: 'innocent', status : true},
-                    {position: '2',p1State:'innocent',p2State: 'agent', status : true},
-                    {position: '3',p1State:'agent',p2State: 'innocent', status : true},
-                    {position: '4',p1State:'agent',p2State: 'agent', status : true},
-                    {position: '5',p1State:'assassin',p2State: 'assassin', status : true}],
-                   
-                    [{position: '6',p1State:'assassin',p2State: 'agent', status : true},
-                    {position: '7',p1State:'agent',p2State: 'assassin', status : true},
-                    {position: '8',p1State:'innocent',p2State: 'agent', status : true},
-                    {position: '9',p1State:'agent',p2State: 'innocent', status : true},
-                    {position: '10',p1State:'innocent',p2State: 'agent', status : true}],
-                   
-                    [{position: '11',p1State:'agent',p2State: 'innocent', status : true},
-                    {position: '12',p1State:'agent',p2State: 'innocent', status : true},
-                    {position: '13',p1State:'agent',p2State: 'innocent', status : true},
-                    {position: '14',p1State:'innocent',p2State: 'innocent', status : true},
-                    {position: '15',p1State:'agent',p2State: 'innocent', status : true}],
-                   
-                    [{position: '16',p1State:'innocent',p2State: 'innocent', status : true},
-                    {position: '17',p1State:'innocent',p2State: 'agent', status : true},
-                    {position: '18',p1State:'innocent',p2State: 'innocent', status : true},
-                    {position: '19',p1State:'assassin',p2State: 'agent', status : true},
-                    {position: '20',p1State:'agent',p2State: 'agent', status : true}],
-                   
-                    [{position: '21',p1State:'innocent',p2State: 'innocent', status : true},
-                    {position: '22',p1State:'innocent',p2State: 'innocent', status : true},
-                    {position: '23',p1State:'innocent',p2State: 'assassin', status : true},
-                    {position: '24',p1State:'innocent',p2State: 'innocent', status : true},
-                    {position: '25',p1State:'innocent',p2State: 'agent'}]
-                ], 
+                    [{position: '1',p1State:'innocent',p2State: 'innocent', status : 'transparent', word : "pug"},
+                    {position: '2',p1State:'innocent',p2State: 'agent', status : 'transparent', word : "vet"},
+                    {position: '3',p1State:'agent',p2State: 'innocent', status : 'transparent', word : "grumble"},
+                    {position: '4',p1State:'agent',p2State: 'agent', status : 'transparent', word : "fawn"},
+                    {position: '5',p1State:'assassin',p2State: 'assassin', status : 'transparent', word : "potato"}],
+                    
+                    [{position: '6',p1State:'assassin',p2State: 'agent', status : 'transparent', word : "rat"},
+                    {position: '7',p1State:'agent',p2State: 'assassin', status : 'transparent', word : "cake"},
+                    {position: '8',p1State:'innocent',p2State: 'agent', status : 'transparent', word : "scroll"},
+                    {position: '9',p1State:'agent',p2State: 'innocent', status : 'transparent', word : "sled"},
+                    {position: '10',p1State:'innocent',p2State: 'agent', status : 'transparent', word : "bench"}],
+                    
+                    [{position: '11',p1State:'agent',p2State: 'innocent', status : 'transparent', word : "biscuit"},
+                    {position: '12',p1State:'agent',p2State: 'innocent', status : 'transparent', word : "desk"},
+                    {position: '13',p1State:'agent',p2State: 'innocent', status : 'transparent', word : "saddle"},
+                    {position: '14',p1State:'innocent',p2State: 'innocent', status : 'transparent', word : "bucket"},
+                    {position: '15',p1State:'agent',p2State: 'innocent', status : 'transparent', word : "beam"}],
+                    
+                    [{position: '16',p1State:'innocent',p2State: 'innocent', status : 'transparent', word : "coach"},
+                    {position: '17',p1State:'innocent',p2State: 'agent', status : 'transparent', word : "frost"},
+                    {position: '18',p1State:'innocent',p2State: 'innocent', status : 'transparent', word : "curry"},
+                    {position: '19',p1State:'assassin',p2State: 'agent', status : 'transparent', word : "parade"},
+                    {position: '20',p1State:'agent',p2State: 'agent', status : 'transparent', word : "london"}],
+                    
+                    [{position: '21',p1State:'innocent',p2State: 'innocent', status : 'transparent', word : "rock"},
+                    {position: '22',p1State:'innocent',p2State: 'innocent', status : 'transparent', word : "floor"},
+                    {position: '23',p1State:'innocent',p2State: 'assassin', status : 'transparent', word : "snake"},
+                    {position: '24',p1State:'innocent',p2State: 'innocent', status : 'transparent', word : "break"},
+                    {position: '25',p1State:'innocent',p2State: 'agent', status : 'transparent', word : "battle"}]
+                  ], 
                 playerStats: {
                     p1: {
                         agentsRemaining: 8
@@ -151,17 +108,23 @@ class Codenames{
                         agentsRemaining: 8
                     }
                 },
-                clue : null,
-                number : null
+                clue: null,
+                number: null,
             }
 
-            
+            newGameCard.randomizer(this.wordArray);
+            this.data.words = newGameCard.copyArray(this.wordArray);
+            console.log('wordArray 1 is ', this.wordArray);
+            console.log('wordArray 2 is ', this.wordArray2);
+            newGameCard.constructCard(this.wordArray);
             
         }
+            
         this.firebase.saveState(this.data);
         //if there is no current player / data, select 25 words and put them into firebase
             //then update firebase with new obj
         //otherwise, just update your local data with the firebase data and rewrite board
+
     }
 
     getData() {
@@ -173,8 +136,16 @@ class Codenames{
         //do something with the data
         $("#clueDisplay").text(data.clue);
         $("#numberDisplay").text(data.number);
+debugger
+        var gameBoard = this.data.gameBoard;
+        for (var gBY = 0; gBY < gameBoard.length; gBY++) {
+            for (var gBX = 0; gBX < gameBoard[gBY].length; gBX++) {
+                $(`[xpos='${gBX}'][ypos='${gBY}]`).css('background-color: ' + gameBoard[gBY][gBX].status)
+            }
+        }
+
+
         // this.checkCurrentPlayer(data.currentPlayer)
-        // if(data.)
         this.updateDB(data);
 
     }
@@ -207,6 +178,8 @@ class Codenames{
         this.updateDB(this.data);
     }
 
+
+
 // class Cards{
 //     constructor( initialWord, p1State, p2State){
 //         this.data = {
@@ -226,6 +199,7 @@ class Codenames{
 //         this.card = $("<div>").text(this.data.word);
 //     }
 // }
+
     
     cardClicked(event) {
        
@@ -235,18 +209,36 @@ class Codenames{
         var clickedCardClass = $(`[num~=${clickedCardNum}]`);
         var fetchData = this.data;
         var gBoard = fetchData.gameBoard;
-        console.log('clicked num', clickedCardClass);
-        console.log('gboard is ',gBoard);
-        console.log(event)
-        console.log('gboard coord is', gBoard[clickedCardY][clickedCardX].p1State)
-        if (gBoard[clickedCardY][clickedCardX].p1State === 'innocent') {
-            clickedCardClass.css({'background-color': 'yellow'});
-        } else if (gBoard[clickedCardY][clickedCardX].p1State === 'assassin') {
-            clickedCardClass.css({'background-color': 'black'});
-        } else if (gBoard[clickedCardY][clickedCardX].p1State === 'agent') {
-            clickedCardClass.css({'background-color': 'green'});
-        }
-    }
 
-    //gameboard에서 assasin인지 아닌지 정보 가져와서 게임 컨디션 if statement쓰기 
+        var playerTag = $('.playerturn1').text();
+        var splitTag = playerTag.split(" ");
+        var player = splitTag[2];
+        console.log("player", player);
+        if(player == 'P1') {
+            if (gBoard[clickedCardY][clickedCardX].p1State === 'innocent') {
+                clickedCardClass.css({'background-color': 'yellow'});
+                gBoard[clickedCardY][clickedCardX].status === 'yellow';
+            } else if (gBoard[clickedCardY][clickedCardX].p1State === 'assassin') {
+                clickedCardClass.css({'background-color': 'black'});
+                gBoard[clickedCardY][clickedCardX].status === 'black';
+                $('.modal').show();
+            } else if (gBoard[clickedCardY][clickedCardX].p1State === 'agent') {
+                clickedCardClass.css({'background-color': 'green'});
+                gBoard[clickedCardY][clickedCardX].status === 'green';
+            }
+        } else {  
+            if (gBoard[clickedCardY][clickedCardX].p2State === 'innocent') {
+                clickedCardClass.css({'background-color': 'yellow'});
+                gBoard[clickedCardY][clickedCardX].status === 'yellow';
+            } else if (gBoard[clickedCardY][clickedCardX].p2State === 'assassin') {
+                clickedCardClass.css({'background-color': 'black'});
+                gBoard[clickedCardY][clickedCardX].status === 'black';
+                $('.modal').show();
+            } else if (gBoard[clickedCardY][clickedCardX].p2State === 'agent') {
+                clickedCardClass.css({'background-color': 'green'});
+                gBoard[clickedCardY][clickedCardX].status === 'green';
+            }
+       }
+        
+    }
 }
