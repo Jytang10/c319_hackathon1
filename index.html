@@ -20,19 +20,13 @@
 <body>
     <!--landing div starts-->
     <div class = "cover landing">
-        <div class="covertext title row">Codename Duet</div>
+        <div class="covertext title row">Codenames Duet</div>
         <div class="info row">
             <div class="fakediv col-4"></div>
             <div class="allinput col-4">
-                <!-- <p class="nametext"> What's your name?</p>
-                <label class = "covertext" id="name">
-                <input type = "text" class="nameinput" id="name">
-                </label> -->
                 <div class="covertext player1btn start row"><button class = "coverbtn player1">Player1</button></div>
                 <div class="covertext player2btn start row"><button class = "coverbtn player2">Player2</button></div>
-                <form action="https://czechgames.com/files/rules/codenames-duet-rules-en.pdf">
-                <div class="covertext howtobtn howtoplay row"><button class ="coverbtn howtoplay">How to play</button></div>
-                </form>    
+                <div class="covertext howtobtn howtoplay row"><button class ="howtoplay"><a href = "https://czechgames.com/files/rules/codenames-duet-rules-en.pdf" target="_blank">How to play</a></button></div>
             </div>
             <div class="fakediv col-4"></div>
         </div>
@@ -43,7 +37,7 @@
     <header>
         <div class = "toparea row">
             <div class = "logo col-2"></div>
-            <div class = "player player1 col-3">
+            <div class = "player col-3">
                 <div class= "playertitle">Player 1</div>
                 <div class="playericon playericon1 col"><p class="playerturn1"></p></div>
             </div>
@@ -128,7 +122,7 @@
                     </div>
                 </div>
             </div>
-            <div class = "player player2 col-3">
+            <div class = "player col-3">
                 <div class= "playertitle">Player 2</div>
                 <div class="playericon playericon2"><p class="playerturn2"></p></div>
             </div>
@@ -139,15 +133,15 @@
     <section>
       <div class = "gamearea stat row">
         <div class = "sidebar col-2">
-            <div class = "stats"><h4>Clue from other player<h4></div>
+            <div class = "stats"><h4>Your Clue<h4></div>
             <div class= "cluearea"><p>Clue</p>
                 <div class="clue output" id='clueDisplay'><p class = "clue"></p></div>
             </div>
             <div class= "cluearea"><p>Number</p>
                 <div class="number output" id='numberDisplay'><p class = "number"></p></div>
             </div>
-            <div class = "timertoken"><h4>Left time token</h4></div>
-            <div class = "tokenvalue"><p class = "token">ex. 7</p></div>
+            <div class = "timertoken"><h4>Turns Remaining</h4></div>
+            <div class = "tokenvalue"><p class = "token"></p></div>
         <!-- <div class="timer"> feature for later</div> -->
         </div>    
         <div class="gamearea cards row col-10">    
@@ -167,14 +161,15 @@
     </section>
     <!--game area ends--> 
     <!--modal--> 
-    <!-- <div class="modal">
-        <p class="message">message!</p>
-        <p>lorem </p>
-        <p>Lorem ipsum dolor sit</p>
+    <div class="modal">
+        <p class="message">GAME OVER</p>
+        <p>Your team has been </p>
+        <p>caught by assassin Dan!</p>
+        <p> FAIL FASTER! </p>
         <div class="options">
-            <button class="retrybtn">button message</button>
+            <button class="retrybtn">Restart</button>
         </div>
-    </div>   -->
+    </div>  
     <!--modal ends-->
     </div>
 </body>
