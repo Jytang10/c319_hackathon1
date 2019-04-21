@@ -169,6 +169,7 @@ class Codenames{
                 }
             }
     }
+        this.handleFirebaseUpdate(this.data);
        this.updateDB(this.data);
     }
 }
