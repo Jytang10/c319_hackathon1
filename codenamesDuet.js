@@ -140,6 +140,7 @@ class Codenames{
                 clickedCardClass.css({'background-image': 'url("images/assassinDan.png")'});
                 clickedCardClass.css({'opacity': 1});
                 gBoard[clickedCardY][clickedCardX].status === 'black';
+                $("#numberDisplay").text('');
                 $('.modal').show();
             } else if (gBoard[clickedCardY][clickedCardX].p1State === 'agent') {
                 clickedCardClass.css({'background-image': 'url("images/back.jpg")'});
@@ -150,7 +151,7 @@ class Codenames{
                     $('.modal2').show();
                 }
             }
-    } else {
+        } else {
             if (gBoard[clickedCardY][clickedCardX].p2State === 'innocent') {
                 clickedCardClass.css({'background-color': 'yellow'});
                 gBoard[clickedCardY][clickedCardX].status === 'yellow';
@@ -168,7 +169,8 @@ class Codenames{
                     $('.modal2').show();
                 }
             }
-    }
-       this.updateDB(this.data);
+       }
+        this.handleFirebaseUpdate(this.data);
+        this.updateDB(this.data);
     }
 }
