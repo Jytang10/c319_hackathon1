@@ -80,14 +80,7 @@ class Codenames{
                 {p1State:'innocent',p2State: 'innocent', status : 'transparent'},
                 {p1State:'innocent',p2State: 'agent', status : 'transparent'}]
               ], 
-               playerStats: {
-                   p1: {
-                       agentsRemaining: 8
-                   },
-                   p2: {
-                       agentsRemaining: 8
-                   }
-               },
+               agentsRemaining: 16,
                clue: null,
                number: null,
                turnCount: 9
@@ -109,7 +102,9 @@ class Codenames{
         $("#clueDisplay").text(data.clue);
         $("#numberDisplay").text(data.number);
         $('.token').text(data.turnCount);
-        this.updateDB(data);
+        $('#agentsRemainingDisplay').text(data.agentsRemaining);
+        this.data = data;
+        // this.updateDB(data);
     }
 
     updateDB(data){                //send updated data to firebase DB
@@ -123,6 +118,7 @@ class Codenames{
         if(this.data.turnCount < 0){
             $('.modal').show();
         }
+        this.handleFirebaseUpdate(this.data);
         this.updateDB(this.data);
     }
     
@@ -149,6 +145,10 @@ class Codenames{
                 clickedCardClass.css({'background-image': 'url("images/back.jpg")'});
                 clickedCardClass.css({'opacity': 1});
                 gBoard[clickedCardY][clickedCardX].status === 'green';
+                this.data.agentsRemaining--;
+                if(this.data.agentsRemaining === 0){
+                    $('.modal2').show();
+                }
             }
     } else {
             if (gBoard[clickedCardY][clickedCardX].p2State === 'innocent') {
@@ -163,6 +163,10 @@ class Codenames{
                 clickedCardClass.css({'background-image': 'url("images/back.jpg")'});
                 clickedCardClass.css({'opacity': 1});
                 gBoard[clickedCardY][clickedCardX].status === 'green';
+                this.data.agentsRemaining--;
+                if(this.data.agentsRemaining === 0){
+                    $('.modal2').show();
+                }
             }
     }
        this.updateDB(this.data);
