@@ -5,6 +5,9 @@
       margin: 0;
       padding: 0;
     }
+    body {
+        overflow: hidden;
+    }
     .cover {
         font-family: "Roboto", sans-serif;
         position: absolute;
@@ -156,6 +159,10 @@
         height: 100%;  
         width: 17%;  
         font-family: 'Concert One', cursive;
+        z-index: 10;
+    }
+    .empty{
+        background-color: #d1c8a0;
     }
     .stats {
         margin-top: 24px;
@@ -187,7 +194,8 @@
     }
     .winpic {
         width: 71%;
-        height: 59%;
+        height: 44%;
+        margin-bottom: 7%;
      }
     .cardback {
         position: absolute;
@@ -232,6 +240,10 @@
     .word {
         font-size: 1.3rem;
     }
+    .submit {
+        display: inline-block;
+        margin-left: 13px;
+    }
     .submit button {
         all: unset;
         cursor: pointer;
@@ -264,14 +276,14 @@
         display: none;
       }
       .modal2{
-          text-align: center;
+        text-align: center;
         font-family: 'Concert One', cursive;
         position: absolute;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
         width: auto;
-        height: 84%;
+        height: 70%;
         display: inline-flex;
         flex-direction: column;
         align-items: center;
@@ -316,7 +328,7 @@
         display: flex;
         margin-top: 17px;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: center;
       }
     @keyframes pop-in {
         0% {
