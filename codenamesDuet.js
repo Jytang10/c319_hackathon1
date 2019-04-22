@@ -104,7 +104,6 @@ class Codenames{
         $('.token').text(data.turnCount);
         $('#agentsRemainingDisplay').text(data.agentsRemaining);
         this.data = data;
-        // this.updateDB(data);
     }
 
     updateDB(data){                //send updated data to firebase DB
@@ -117,6 +116,8 @@ class Codenames{
         this.data.turnCount-=1;
         if(this.data.turnCount < 0){
             $('.modal').show();
+            this.firebase.saveState(null);
+            this.updateDB();
         }
         this.handleFirebaseUpdate(this.data);
         this.updateDB(this.data);
@@ -141,6 +142,8 @@ class Codenames{
                 clickedCardClass.css({'opacity': 1});
                 gBoard[clickedCardY][clickedCardX].status === 'black';
                 $('.modal').show();
+                this.firebase.saveState(null);
+                this.updateDB();
             } else if (gBoard[clickedCardY][clickedCardX].p1State === 'agent') {
                 clickedCardClass.css({'background-image': 'url("images/back.jpg")'});
                 clickedCardClass.css({'opacity': 1});
@@ -148,6 +151,8 @@ class Codenames{
                 this.data.agentsRemaining--;
                 if(this.data.agentsRemaining === 0){
                     $('.modal2').show();
+                    this.firebase.saveState(null);
+                    this.updateDB();
                 }
             }
     } else {
@@ -159,6 +164,8 @@ class Codenames{
                 clickedCardClass.css({'opacity': 1});
                 gBoard[clickedCardY][clickedCardX].status === 'black';
                 $('.modal').show();
+                this.firebase.saveState(null);
+                this.updateDB();
             } else if (gBoard[clickedCardY][clickedCardX].p2State === 'agent') {
                 clickedCardClass.css({'background-image': 'url("images/back.jpg")'});
                 clickedCardClass.css({'opacity': 1});
@@ -166,6 +173,8 @@ class Codenames{
                 this.data.agentsRemaining--;
                 if(this.data.agentsRemaining === 0){
                     $('.modal2').show();
+                    this.firebase.saveState(null);
+                    this.updateDB();
                 }
             }
     }
