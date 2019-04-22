@@ -15,3 +15,12 @@ var firebaseConfig = {
   storageBucket: "",
   messagingSenderId: "1016360363634"
 };
+
+// var firebaseConfig = {
+//   apiKey: "AIzaSyCpoNH6M6NPGIm5X-cYotdTHCrdes-HMvc",
+//   authDomain: "codenamesduet-67da1.firebaseapp.com",
+//   databaseURL: "https://codenamesduet-67da1.firebaseio.com",
+//   projectId: "ccodenames-duet-testing",
+//   storageBucket: "",
+//   messagingSenderId: "1016360363634"
+// };

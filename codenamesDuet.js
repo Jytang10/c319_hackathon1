@@ -50,44 +50,37 @@ class Codenames{
                players : [this.newPlayer],
                words: null,
                gameBoard: [
-                [{p1State:'innocent',p2State: 'innocent', status : 'transparent'},
-                {p1State:'innocent',p2State: 'agent', status : 'transparent'},
-                {p1State:'agent',p2State: 'innocent', status : 'transparent'},
-                {p1State:'agent',p2State: 'agent', status : 'transparent'},
-                {p1State:'assassin',p2State: 'assassin', status : 'transparent'}],
+                [{num: 1, p1State:'innocent',p2State: 'innocent', status : 'transparent'},
+                {num: 2, p1State:'innocent',p2State: 'agent', status : 'transparent'},
+                {num: 3, p1State:'agent',p2State: 'innocent', status : 'transparent'},
+                {num: 4, p1State:'agent',p2State: 'agent', status : 'transparent'},
+                {num: 5, p1State:'assassin',p2State: 'assassin', status : 'transparent'}],
                 
-                [{p1State:'assassin',p2State: 'agent', status : 'transparent'},
-                {p1State:'agent',p2State: 'assassin', status : 'transparent'},
-                {p1State:'innocent',p2State: 'agent', status : 'transparent'},
-                {p1State:'agent',p2State: 'innocent', status : 'transparent'},
-                {p1State:'innocent',p2State: 'agent', status : 'transparent'}],
+                [{num: 6, p1State:'assassin',p2State: 'agent', status : 'transparent'},
+                {num: 7, p1State:'agent',p2State: 'assassin', status : 'transparent'},
+                {num: 8, p1State:'innocent',p2State: 'agent', status : 'transparent'},
+                {num: 9, p1State:'agent',p2State: 'innocent', status : 'transparent'},
+                {num: 10, p1State:'innocent',p2State: 'agent', status : 'transparent'}],
                 
-                [{p1State:'agent',p2State: 'innocent', status : 'transparent'},
-                {p1State:'agent',p2State: 'innocent', status : 'transparent'},
-                {p1State:'agent',p2State: 'innocent', status : 'transparent'},
-                {p1State:'innocent',p2State: 'innocent', status : 'transparent'},
-                {p1State:'agent',p2State: 'innocent', status : 'transparent'}],
+                [{num: 11, p1State:'agent',p2State: 'innocent', status : 'transparent'},
+                {num: 12, p1State:'agent',p2State: 'innocent', status : 'transparent'},
+                {num: 13, p1State:'agent',p2State: 'innocent', status : 'transparent'},
+                {num: 14, p1State:'innocent',p2State: 'innocent', status : 'transparent'},
+                {num: 15, p1State:'agent',p2State: 'innocent', status : 'transparent'}],
                 
-                [{p1State:'innocent',p2State: 'innocent', status : 'transparent'},
-                {p1State:'innocent',p2State: 'agent', status : 'transparent'},
-                {p1State:'innocent',p2State: 'innocent', status : 'transparent'},
-                {p1State:'assassin',p2State: 'agent', status : 'transparent'},
-                {p1State:'agent',p2State: 'agent', status : 'transparent'}],
+                [{num: 16, p1State:'innocent',p2State: 'innocent', status : 'transparent'},
+                {num: 17, p1State:'innocent',p2State: 'agent', status : 'transparent'},
+                {num: 18, p1State:'innocent',p2State: 'innocent', status : 'transparent'},
+                {num: 19, p1State:'assassin',p2State: 'agent', status : 'transparent'},
+                {num: 20, p1State:'agent',p2State: 'agent', status : 'transparent'}],
                 
-                [{p1State:'innocent',p2State: 'innocent', status : 'transparent'},
-                {p1State:'innocent',p2State: 'innocent', status : 'transparent'},
-                {p1State:'innocent',p2State: 'assassin', status : 'transparent'},
-                {p1State:'innocent',p2State: 'innocent', status : 'transparent'},
-                {p1State:'innocent',p2State: 'agent', status : 'transparent'}]
+                [{num: 21, p1State:'innocent',p2State: 'innocent', status : 'transparent'},
+                {num: 22, p1State:'innocent',p2State: 'innocent', status : 'transparent'},
+                {num: 23, p1State:'innocent',p2State: 'assassin', status : 'transparent'},
+                {num: 24, p1State:'innocent',p2State: 'innocent', status : 'transparent'},
+                {num: 25, p1State:'innocent',p2State: 'agent', status : 'transparent'}]
               ], 
-               playerStats: {
-                   p1: {
-                       agentsRemaining: 8
-                   },
-                   p2: {
-                       agentsRemaining: 8
-                   }
-               },
+               agentsRemaining: 16,
                clue: null,
                number: null,
                turnCount: 9
@@ -110,6 +103,13 @@ class Codenames{
         $("#numberDisplay").text(data.number);
         $('.token').text(data.turnCount);
         $('#agentsRemainingDisplay').text(data.agentsRemaining);
+        var gameBoard = data.gameBoard;
+        for (var gBY = 0; gBY < gameBoard.length; gBY++) {
+            for (var gBX = 0; gBX < gameBoard[gBY].length; gBX++) {
+                var currentNum = gameBoard[gBY][gBX].num;
+                $(`[num=${currentNum}]`).css({'background-color': gameBoard[gBY][gBX].status});
+            }
+        }
         this.data = data;
         // this.updateDB(data);
     }
@@ -141,18 +141,17 @@ class Codenames{
         var player = splitTag[2];
         if (player == 'P1') {
             if (gBoard[clickedCardY][clickedCardX].p1State === 'innocent') {
-                debugger
                 clickedCardClass.css({'background-color': 'yellow'});
-                gBoard[clickedCardY][clickedCardX].status === 'yellow';
+                gBoard[clickedCardY][clickedCardX].status = 'yellow';
             } else if (gBoard[clickedCardY][clickedCardX].p1State === 'assassin') {
                 clickedCardClass.css({'background-image': 'url("images/assassinDan.png")'});
                 clickedCardClass.css({'opacity': 1});
-                gBoard[clickedCardY][clickedCardX].status === 'black';
+                gBoard[clickedCardY][clickedCardX].status = 'black';
                 $('.modal').show();
             } else if (gBoard[clickedCardY][clickedCardX].p1State === 'agent') {
                 clickedCardClass.css({'background-image': 'url("images/back.jpg")'});
                 clickedCardClass.css({'opacity': 1});
-                gBoard[clickedCardY][clickedCardX].status === 'green';
+                gBoard[clickedCardY][clickedCardX].status = 'green';
                 this.data.agentsRemaining--;
                 if(this.data.agentsRemaining === 0){
                     $('.modal2').show();
@@ -161,23 +160,24 @@ class Codenames{
         } else {
             if (gBoard[clickedCardY][clickedCardX].p2State === 'innocent') {
                 clickedCardClass.css({'background-color': 'yellow'});
-                gBoard[clickedCardY][clickedCardX].status === 'yellow';
+                gBoard[clickedCardY][clickedCardX].status = 'yellow';
             } else if (gBoard[clickedCardY][clickedCardX].p2State === 'assassin') {
                 clickedCardClass.css({'background-image': 'url("images/assassinDan.png")'});
                 clickedCardClass.css({'opacity': 1});
-                gBoard[clickedCardY][clickedCardX].status === 'black';
+                gBoard[clickedCardY][clickedCardX].status = 'black';
                 $('.modal').show();
             } else if (gBoard[clickedCardY][clickedCardX].p2State === 'agent') {
                 clickedCardClass.css({'background-image': 'url("images/back.jpg")'});
                 clickedCardClass.css({'opacity': 1});
-                gBoard[clickedCardY][clickedCardX].status === 'green';
+                gBoard[clickedCardY][clickedCardX].status = 'green';
                 this.data.agentsRemaining--;
                 if(this.data.agentsRemaining === 0){
                     $('.modal2').show();
                 }
             }
         }
-        this.handleFirebaseUpdate(this.data);
         this.updateDB(this.data);
+        this.handleFirebaseUpdate(this.data);
+       
     }
 }
