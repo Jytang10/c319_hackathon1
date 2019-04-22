@@ -99,15 +99,28 @@ class Codenames{
     handleFirebaseUpdate( data ){     //checks firebase data and make local changes
         console.log('this data is ', data);
         //do something with the data
+        var gameBoard = data.gameBoard;
+
         $("#clueDisplay").text(data.clue);
         $("#numberDisplay").text(data.number);
         $('.token').text(data.turnCount);
         $('#agentsRemainingDisplay').text(data.agentsRemaining);
-        var gameBoard = data.gameBoard;
+        
         for (var gBY = 0; gBY < gameBoard.length; gBY++) {
             for (var gBX = 0; gBX < gameBoard[gBY].length; gBX++) {
                 var currentNum = gameBoard[gBY][gBX].num;
-                $(`[num=${currentNum}]`).css({'background-color': gameBoard[gBY][gBX].status});
+                var currentStatus = gameBoard[gBY][gBX].status;
+                if (currentStatus === 'black') {
+                    $(`[num=${currentNum}]`).css({'background-image': 'url("images/assassinDan.png")', 'opacity': 1});
+                    $('.modal').show();
+                } else if (currentStatus === 'green') {
+                    $(`[num=${currentNum}]`).css({'background-image': 'url("images/back.jpg")', 'opacity': 1});
+                    if(data.agentsRemaining === 0){
+                        $('.modal2').show();
+                    }
+                } else {
+                    $(`[num=${currentNum}]`).css({'background-color': currentStatus});
+                }
             }
         }
         this.data = data;
@@ -146,16 +159,16 @@ class Codenames{
             } else if (gBoard[clickedCardY][clickedCardX].p1State === 'assassin') {
                 clickedCardClass.css({'background-image': 'url("images/assassinDan.png")'});
                 clickedCardClass.css({'opacity': 1});
-                gBoard[clickedCardY][clickedCardX].status = 'black';
-                $('.modal').show();
+                // gBoard[clickedCardY][clickedCardX].status = 'black';
+                // $('.modal').show();
             } else if (gBoard[clickedCardY][clickedCardX].p1State === 'agent') {
                 clickedCardClass.css({'background-image': 'url("images/back.jpg")'});
                 clickedCardClass.css({'opacity': 1});
                 gBoard[clickedCardY][clickedCardX].status = 'green';
                 this.data.agentsRemaining--;
-                if(this.data.agentsRemaining === 0){
-                    $('.modal2').show();
-                }
+                // if(this.data.agentsRemaining === 0){
+                //     $('.modal2').show();
+                // }
             }
         } else {
             if (gBoard[clickedCardY][clickedCardX].p2State === 'innocent') {
@@ -171,9 +184,9 @@ class Codenames{
                 clickedCardClass.css({'opacity': 1});
                 gBoard[clickedCardY][clickedCardX].status = 'green';
                 this.data.agentsRemaining--;
-                if(this.data.agentsRemaining === 0){
-                    $('.modal2').show();
-                }
+                // if(this.data.agentsRemaining === 0){
+                //     $('.modal2').show();
+                // }
             }
         }
         this.updateDB(this.data);
