@@ -104,6 +104,10 @@ class Codenames{
         $("#clueDisplay").text(data.clue);
         $("#numberDisplay").text(data.number);
         $('.token').text(data.turnCount);
+        if(data.turnCount < 0){
+            $('.modal').show();
+            this.firebase.saveState(null);
+        }
         $('#agentsRemainingDisplay').text(data.agentsRemaining);
         
         for (var gBY = 0; gBY < gameBoard.length; gBY++) {
