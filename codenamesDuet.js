@@ -113,10 +113,12 @@ class Codenames{
                 if (currentStatus === 'black') {
                     $(`[num=${currentNum}]`).css({'background-image': 'url("images/assassinDan.png")', 'opacity': 1});
                     $('.modal').show();
+                    this.firebase.saveState(null);
                 } else if (currentStatus === 'green') {
                     $(`[num=${currentNum}]`).css({'background-image': 'url("images/back.jpg")', 'opacity': 1});
                     if(data.agentsRemaining === 0){
                         $('.modal2').show();
+                        this.firebase.saveState(null);
                     }
                 } else {
                     $(`[num=${currentNum}]`).css({'background-color': currentStatus});
@@ -136,6 +138,7 @@ class Codenames{
         this.data.turnCount-=1;
         if(this.data.turnCount < 0){
             $('.modal').show();
+            this.firebase.saveState(null);
         }
         this.handleFirebaseUpdate(this.data);
         this.updateDB(this.data);
@@ -158,6 +161,9 @@ class Codenames{
             } else if (gBoard[clickedCardY][clickedCardX].p1State === 'assassin') {
                 clickedCardClass.css({'background-image': 'url("images/assassinDan.png")'});
                 clickedCardClass.css({'opacity': 1});
+                gBoard[clickedCardY][clickedCardX].status = 'black';
+                $('.modal').show();
+                this.firebase.saveState(null);
             } else if (gBoard[clickedCardY][clickedCardX].p1State === 'agent') {
                 clickedCardClass.css({'background-image': 'url("images/back.jpg")'});
                 clickedCardClass.css({'opacity': 1});
@@ -173,6 +179,7 @@ class Codenames{
                 clickedCardClass.css({'opacity': 1});
                 gBoard[clickedCardY][clickedCardX].status = 'black';
                 $('.modal').show();
+                this.firebase.saveState(null);
             } else if (gBoard[clickedCardY][clickedCardX].p2State === 'agent') {
                 clickedCardClass.css({'background-image': 'url("images/back.jpg")'});
                 clickedCardClass.css({'opacity': 1});
