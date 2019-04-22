@@ -116,7 +116,7 @@ class Codenames{
                 } else if (currentStatus === 'green') {
                     $(`[num=${currentNum}]`).css({'background-image': 'url("images/back.jpg")', 'opacity': 1});
                     if(data.agentsRemaining === 0){
-                        $('.modal2').show();
+                    $('.modal2').show();
                     }
                 } else {
                     $(`[num=${currentNum}]`).css({'background-color': currentStatus});
@@ -158,6 +158,7 @@ class Codenames{
             } else if (gBoard[clickedCardY][clickedCardX].p1State === 'assassin') {
                 clickedCardClass.css({'background-image': 'url("images/assassinDan.png")'});
                 clickedCardClass.css({'opacity': 1});
+                $('.modal').show();
             } else if (gBoard[clickedCardY][clickedCardX].p1State === 'agent') {
                 clickedCardClass.css({'background-image': 'url("images/back.jpg")'});
                 clickedCardClass.css({'opacity': 1});
