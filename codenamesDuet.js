@@ -36,16 +36,16 @@ class Codenames{
         this.cardClicked = this.cardClicked.bind(this);
         this.giveNewClue = this.giveNewClue.bind(this);
     }
-    firebaseLoaded(){ //게임 처음으로 로딩될때 
+    firebaseLoaded(){
         this.firebase.getAllData( this.handleInitialGameState );
     }
     handleInitialGameState( data ){
-       var newGameCard = new Card();
-       if (data && data.players) { //player2 접속할때
+        var newGameCard = new Card();
+       if (data && data.players) {
            this.data = data;
            this.data.players.push(this.newPlayer);
            newGameCard.constructCard(this.data.words);
-       } else { //player1 접속할때 
+       } else {
            this.data = {
                players : [this.newPlayer],
                words: null,
@@ -117,14 +117,15 @@ class Codenames{
                 } else if (currentStatus === 'green') {
                     $(`[num=${currentNum}]`).css({'background-image': 'url("images/back.jpg")', 'opacity': 1});
                     if(data.agentsRemaining === 0){
-                    $('.modal2').show();
+                        $('.modal2').show();
+                        this.firebase.saveState(null);
                     }
                 } else {
                     $(`[num=${currentNum}]`).css({'background-color': currentStatus});
                 }
             }
         }
-        this.data = data; //save changes to local data
+        this.data = data;
     }
 
     updateDB(data){                //send updated data to firebase DB
@@ -141,7 +142,6 @@ class Codenames{
         }
         this.updateDB(this.data);
         this.handleFirebaseUpdate(this.data);
-        this.updateDB(this.data);  //send local updated data to firebase DB
     }
     
     cardClicked(event) {
@@ -161,11 +161,9 @@ class Codenames{
             } else if (gBoard[clickedCardY][clickedCardX].p1State === 'assassin') {
                 clickedCardClass.css({'background-image': 'url("images/assassinDan.png")'});
                 clickedCardClass.css({'opacity': 1});
-<<<<<<< HEAD
-                $('.modal').show();
-=======
                 gBoard[clickedCardY][clickedCardX].status = 'black';
                 $('.modal').show();
+                this.firebase.saveState(null);
             } else if (gBoard[clickedCardY][clickedCardX].p1State === 'agent') {
                 clickedCardClass.css({'background-image': 'url("images/back.jpg")'});
                 clickedCardClass.css({'opacity': 1});
@@ -181,6 +179,7 @@ class Codenames{
                 clickedCardClass.css({'opacity': 1});
                 gBoard[clickedCardY][clickedCardX].status = 'black';
                 $('.modal').show();
+                this.firebase.saveState(null);
             } else if (gBoard[clickedCardY][clickedCardX].p2State === 'agent') {
                 clickedCardClass.css({'background-image': 'url("images/back.jpg")'});
                 clickedCardClass.css({'opacity': 1});
