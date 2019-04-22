@@ -140,8 +140,8 @@ class Codenames{
             $('.modal').show();
             this.firebase.saveState(null);
         }
-        this.handleFirebaseUpdate(this.data);
         this.updateDB(this.data);
+        this.handleFirebaseUpdate(this.data);
     }
     
     cardClicked(event) {
